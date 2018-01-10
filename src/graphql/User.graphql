@@ -1,0 +1,20 @@
+interface User {
+  id: ID!
+  username: String!
+  email: String!
+  status: Int!
+  firstName: String
+  lastName: String
+}
+
+type XUser implements User {
+  id: ID!
+  username: String!
+  email: String!
+  status: Int!
+  firstName: String
+  lastName: String
+
+  password: String!
+  source: String!
+}

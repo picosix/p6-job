@@ -1,0 +1,5 @@
+# import { XUser } from "User.graphql"
+
+type Query {
+  users: [XUser]
+}
