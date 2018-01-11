@@ -1,14 +1,16 @@
 import * as express from "express";
 import * as bodyParser from "body-parser";
 import * as compression from "compression";
-import * as dotenv from "dotenv";
 import * as logger from "morgan";
+import * as mongoose from "mongoose";
+import * as bluebird from "bluebird";
 
 import { graphqlExpress, graphiqlExpress } from "apollo-server-express";
 import { importSchema } from "graphql-import";
 import { makeExecutableSchema } from "graphql-tools";
 
-import { debug } from "./settings";
+import { debug, mongoUri } from "./settings";
+
 // --- BEGIN ---
 // Some fake data
 const users = [
@@ -33,6 +35,15 @@ const schema = makeExecutableSchema({
   resolvers
 });
 // --- END ---
+
+// Mongoose config
+mongoose.connect(mongoUri, { useMongoClient: true });
+/**
+ * To fix message "Cannot assign to 'Promise'
+ * because it is a constant or a read-only property"
+ * Use (<any>mongoose).Promise = bluebird;
+ */
+(<any>mongoose).Promise = bluebird;
 
 // Create Express server
 const app = express();
