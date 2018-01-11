@@ -10,31 +10,7 @@ import { importSchema } from "graphql-import";
 import { makeExecutableSchema } from "graphql-tools";
 
 import { debug, mongoUri } from "./settings";
-
-// --- BEGIN ---
-// Some fake data
-const users = [
-  {
-    id: "random",
-    username: "picosix",
-    email: "picosix.com@gmail.com",
-    status: 1,
-    firstName: "Tuan",
-    lastName: "Nguyen"
-  }
-];
-
-// The resolvers
-const resolvers = {
-  Query: { users: async () => users }
-};
-
-// Put together a schema
-const schema = makeExecutableSchema({
-  typeDefs: importSchema(`${__dirname}/graphql/schema.graphql`),
-  resolvers
-});
-// --- END ---
+import schema from "./graphql";
 
 // Mongoose config
 mongoose.connect(mongoUri, { useMongoClient: true });
