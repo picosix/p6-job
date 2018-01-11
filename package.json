@@ -1,7 +1,7 @@
 {
-  "name": "picosix",
+  "name": "p6-job",
   "version": "0.0.1",
-  "description": "Picosix platform",
+  "description": "Don't just build a to do project, build a real-work project",
   "main": "dist/index",
   "author": "Tuan Nguyen <picosix.com@gmail.com>",
   "license": "MIT",
@@ -23,6 +23,7 @@
     "@types/body-parser": "^1.16.8",
     "@types/express": "^4.11.0",
     "@types/graphql": "^0.11.7",
+    "@types/mongoose": "^4.7.32",
     "@types/shelljs": "^0.7.7",
     "concurrently": "^3.5.1",
     "nodemon": "^1.14.10",
@@ -38,6 +39,7 @@
     "express": "^4.16.2",
     "graphql": "^0.12.3",
     "graphql-import": "^0.3.1",
-    "graphql-tools": "^2.18.0"
+    "graphql-tools": "^2.18.0",
+    "mongoose": "^4.13.9"
   }
 }
