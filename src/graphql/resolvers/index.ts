@@ -1,3 +1,5 @@
+import * as UserService from "../../services/XUser/user.service";
+
 const users = [
   {
     id: "random",
@@ -10,5 +12,19 @@ const users = [
 ];
 
 export default {
-  Query: { users: async () => users }
+  Query: {
+    async users() {
+      return users;
+    }
+  },
+  Mutation: {
+    async createUser(
+      obj = {},
+      { email = "", username = "" },
+      context = {},
+      info = {}
+    ) {
+      return UserService.create(email, username);
+    }
+  }
 };

@@ -1,3 +1,4 @@
+import * as mongoose from "mongoose";
 import * as errorHandler from "errorhandler";
 
 import { debug } from "./settings";
