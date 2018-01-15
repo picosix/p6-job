@@ -59,21 +59,5 @@ const userSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-// Password hash middleware
-userSchema.pre("save", async function save(next) {
-  try {
-    const user = this;
-    // Password is not modified, don't care about it
-    if (!user.isModified("password")) {
-      return next();
-    }
-
-    user.password = await bcrypt.hash(user.password, 10);
-    return next();
-  } catch (error) {
-    return next(error);
-  }
-});
-
 // Defined model
 export default userSchema;
