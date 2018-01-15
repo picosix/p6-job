@@ -4,6 +4,15 @@
 
 > Xây dựng dự án thật tế bằng NodeJS, Typescript và GraphQL
 
+## Demo
+
+Updating ...
+
+## Documents
+
+1. [Giới thiệu project](./document/0-introduce-project.md)
+2. [Giới thiệu tài liệu học tập](./document/1-introduce-documents.md)
+
 ## Mục đích project này gồm
 
 * Mình học Typescript và GraphQL
