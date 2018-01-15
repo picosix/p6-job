@@ -1,5 +1,4 @@
 import * as mongoose from "mongoose";
-import * as bcrypt from "bcrypt";
 
 // Constants
 export const STATUS_BLOCKED = -1;
