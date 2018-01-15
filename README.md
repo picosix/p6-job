@@ -6,7 +6,7 @@
 
 ## Demo
 
-Updating ...
+[Demo](http://job.picosix.info/graphiql?query=%7B%0A%20%20users%20%7B%0A%20%20%20%20username%2C%0A%20%20%20%20email%0A%20%20%7D%0A%7D)
 
 ## Documents
 
