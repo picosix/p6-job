@@ -10,6 +10,10 @@ Updating ...
 
 ## Documents
 
+0. Note
+
+* [Append A](./document/Append-A.md)
+
 1. [Giới thiệu project](./document/0-introduce-project.md)
 2. [Giới thiệu tài liệu học tập](./document/1-introduce-documents.md)
 
@@ -75,3 +79,11 @@ Những thành viên tham gia có thể
 ```
 
 * Sử dụng invite link để tham gia Slack: https://join.slack.com/t/picosix/shared_invite/enQtMjk4OTQ5MTc0Njc2LTc0YjBiNzRmNmRmYTI0YTk3YzVkNTcwODE2MTFmMDJiZmEzYzUzNGYwN2EwMDQ2Mjg4MjUwNjZiNmZjODk4OTY
+
+## Yêu cầu
+
+* Với mỗi bạn tham gia, cần làm ít nhất MỘT TASK trong MỘT TUẦN
+
+## Quy tắc
+
+* Với ai vi phạm quy tắc BA LẦN, mình sẽ kích khỏi project (Áp dụng từ tháng **THỨ HAI**)

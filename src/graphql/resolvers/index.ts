@@ -1,5 +1,3 @@
-import * as UserService from "../../services/XUser/user.service";
-
 const users = [
   {
     id: "random",
@@ -24,7 +22,7 @@ export default {
       context = {},
       info = {}
     ) {
-      return UserService.create(email, username);
+      return { email, username };
     }
   }
 };

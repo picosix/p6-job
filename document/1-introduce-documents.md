@@ -1,5 +1,9 @@
 # Giới thiệu tài liệu học tập
 
+## Cách deploy một tính năng trên Git
+
+Các bạn nên đọc bài này để có cái nhìn khái quát về việc làm thế nào mà bạn có thể đóng cóp code của mình vào một git respo https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow
+
 ## You don't know JS
 
 Link: https://github.com/getify/You-Dont-Know-JS

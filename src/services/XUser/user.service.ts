@@ -1,7 +1,6 @@
 import db from "../../db";
 
 const UserModel = db.model("User");
-console.log(UserModel);
 
 export const create = async (
   email: string,
