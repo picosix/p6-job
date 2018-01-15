@@ -8,7 +8,6 @@ import { importSchema } from "graphql-import";
 import { makeExecutableSchema } from "graphql-tools";
 
 import { debug, version } from "./settings";
-import db from "./db";
 import schema from "./graphql";
 
 // Create Express server

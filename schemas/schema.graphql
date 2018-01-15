@@ -8,9 +8,9 @@ type Mutation {
   createUser(
     email: String!
     username: String!
-    status: Int
-    password: String
-    source: String
+    status: Int!
+    password: String!
+    source: String!
   ): User
 }
 
