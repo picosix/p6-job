@@ -1,3 +1,5 @@
+![PicoSix](./document/static/logo.png)
+
 # p6-job
 
 > Xây dựng dự án thật tế bằng NodeJS, Typescript và GraphQL
