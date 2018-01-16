@@ -6,5 +6,5 @@ dotenv.config({ path: ".env" });
 // Export settings
 exports.debug = process.env.NODE_ENV !== "production";
 exports.mongoUri = process.env.MONGO_URI;
-exports.version = process.env.API_VERSION || "v1";
+exports.endpoint = process.env.API_ENDPOINT || "graphql";
 //# sourceMappingURL=index.js.map

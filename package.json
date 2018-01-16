@@ -2,7 +2,6 @@
   "name": "p6-job",
   "version": "0.0.1",
   "description": "Don't just build a to do project, build a real-work project",
-  "main": "dist/index",
   "author": "Tuan Nguyen <picosix.com@gmail.com>",
   "license": "MIT",
   "scripts": {

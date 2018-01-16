@@ -7,8 +7,9 @@ import { graphqlExpress, graphiqlExpress } from "apollo-server-express";
 import { importSchema } from "graphql-import";
 import { makeExecutableSchema } from "graphql-tools";
 
-import { debug, version } from "./settings";
+import { debug, endpoint } from "./settings";
 import schema from "./graphql";
+import db from "./db";
 
 // Create Express server
 const app = express();
@@ -21,11 +22,23 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // The GraphQL endpoint
-app.use(`/${version}`, bodyParser.json(), graphqlExpress({ schema }));
+app.use(
+  `/${endpoint}`,
+  bodyParser.json(),
+  graphqlExpress(req => {
+    return {
+      schema,
+      context: {
+        db
+      },
+      debug
+    };
+  })
+);
 
 if (debug) {
   // GraphiQL, a visual editor for queries
-  app.use("/graphiql", graphiqlExpress({ endpointURL: `/${version}` }));
+  app.use("/graphiql", graphiqlExpress({ endpointURL: `/${endpoint}` }));
 }
 
 export default app;

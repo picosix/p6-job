@@ -7,6 +7,7 @@ var logger = require("morgan");
 var apollo_server_express_1 = require("apollo-server-express");
 var settings_1 = require("./settings");
 var graphql_1 = require("./graphql");
+var db_1 = require("./db");
 // Create Express server
 var app = express();
 // Express configuration
@@ -16,10 +17,18 @@ app.use(logger("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 // The GraphQL endpoint
-app.use("/" + settings_1.version, bodyParser.json(), apollo_server_express_1.graphqlExpress({ schema: graphql_1["default"] }));
+app.use("/" + settings_1.endpoint, bodyParser.json(), apollo_server_express_1.graphqlExpress(function (req) {
+    return {
+        schema: graphql_1["default"],
+        context: {
+            db: db_1["default"]
+        },
+        debug: settings_1.debug
+    };
+}));
 if (settings_1.debug) {
     // GraphiQL, a visual editor for queries
-    app.use("/graphiql", apollo_server_express_1.graphiqlExpress({ endpointURL: "/" + settings_1.version }));
+    app.use("/graphiql", apollo_server_express_1.graphiqlExpress({ endpointURL: "/" + settings_1.endpoint }));
 }
 exports["default"] = app;
 //# sourceMappingURL=app.js.map

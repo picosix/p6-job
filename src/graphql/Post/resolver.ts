@@ -3,6 +3,7 @@ const users = [
     id: "random",
     username: "picosix",
     email: "picosix.com@gmail.com",
+    password: "12345",
     status: 1,
     firstName: "Tuan",
     lastName: "Nguyen"
@@ -11,18 +12,13 @@ const users = [
 
 export default {
   Query: {
-    async users() {
+    async users(obj = {}, args = {}, context = {}, info = {}) {
       return users;
     }
   },
   Mutation: {
-    async createUser(
-      obj = {},
-      { email = "", username = "" },
-      context = {},
-      info = {}
-    ) {
-      return { email, username };
+    async createUser(obj = {}, args = {}, context = {}, info = {}) {
+      return users[0];
     }
   }
 };

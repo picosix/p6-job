@@ -1,10 +1,8 @@
-import { importSchema } from "graphql-import";
-import { makeExecutableSchema } from "graphql-tools";
-import { resolve } from "path";
+import { mergeSchemas } from "graphql-tools";
 
-import resolvers from "./resolvers";
+import userSchema from "./User";
+import postSchema from "./User";
 
-export default makeExecutableSchema({
-  typeDefs: importSchema(resolve(__dirname, "../../schemas/schema.graphql")),
-  resolvers
+export default mergeSchemas({
+  schemas: [userSchema, postSchema]
 });

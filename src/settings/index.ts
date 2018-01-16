@@ -6,4 +6,4 @@ dotenv.config({ path: ".env" });
 // Export settings
 export const debug = process.env.NODE_ENV !== "production";
 export const mongoUri = process.env.MONGO_URI;
-export const version = process.env.API_VERSION || "v1";
+export const endpoint = process.env.API_ENDPOINT || "graphql";

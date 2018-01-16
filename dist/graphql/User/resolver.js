@@ -34,11 +34,40 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var _this = this;
 exports.__esModule = true;
-var db_1 = require("../../db");
-var UserModel = db_1["default"].model("User");
-exports.create = function (email, username, status, source, password) { return __awaiter(_this, void 0, void 0, function () { return __generator(this, function (_a) {
-    return [2 /*return*/, UserModel.create({ email: email, username: username, status: status, source: source, password: password })];
-}); }); };
-//# sourceMappingURL=user.service.js.map
+var posts = [
+    {
+        id: "random",
+        userId: "random",
+        description: "A funny description ..."
+    }
+];
+exports["default"] = {
+    Query: {
+        posts: function (obj, args, context, info) {
+            if (obj === void 0) { obj = {}; }
+            if (args === void 0) { args = {}; }
+            if (context === void 0) { context = {}; }
+            if (info === void 0) { info = {}; }
+            return __awaiter(this, void 0, void 0, function () {
+                return __generator(this, function (_a) {
+                    return [2 /*return*/, posts];
+                });
+            });
+        }
+    },
+    Mutation: {
+        createPost: function (obj, args, context, info) {
+            if (obj === void 0) { obj = {}; }
+            if (args === void 0) { args = {}; }
+            if (context === void 0) { context = {}; }
+            if (info === void 0) { info = {}; }
+            return __awaiter(this, void 0, void 0, function () {
+                return __generator(this, function (_a) {
+                    return [2 /*return*/, posts[0]];
+                });
+            });
+        }
+    }
+};
+//# sourceMappingURL=resolver.js.map
