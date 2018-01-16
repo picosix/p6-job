@@ -35,36 +35,40 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-var posts = [
+var users = [
     {
         id: "random",
-        userId: "random",
-        description: "A funny description ..."
+        username: "picosix",
+        email: "picosix.com@gmail.com",
+        password: "12345",
+        status: 1,
+        firstName: "Tuan",
+        lastName: "Nguyen"
     }
 ];
 exports["default"] = {
     Query: {
-        posts: function (obj, args, context, info) {
+        users: function (obj, args, context, info) {
             if (obj === void 0) { obj = {}; }
             if (args === void 0) { args = {}; }
             if (context === void 0) { context = {}; }
             if (info === void 0) { info = {}; }
             return __awaiter(this, void 0, void 0, function () {
                 return __generator(this, function (_a) {
-                    return [2 /*return*/, posts];
+                    return [2 /*return*/, users];
                 });
             });
         }
     },
     Mutation: {
-        createPost: function (obj, args, context, info) {
+        createUser: function (obj, args, context, info) {
             if (obj === void 0) { obj = {}; }
             if (args === void 0) { args = {}; }
             if (context === void 0) { context = {}; }
             if (info === void 0) { info = {}; }
             return __awaiter(this, void 0, void 0, function () {
                 return __generator(this, function (_a) {
-                    return [2 /*return*/, posts[0]];
+                    return [2 /*return*/, users[0]];
                 });
             });
         }

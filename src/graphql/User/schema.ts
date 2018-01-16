@@ -1,18 +1,26 @@
 export default `
-  type Post {
+  type User {
     id: ID!
-    userId: String!
-    description: String!
+    username: String!
+    email: String!
+    password: String!
+    status: Int!
+    firstName: String
+    lastName: String
   }
 
   type Query {
-    posts: [Post!]
+    users: [User!]
   }
 
   type Mutation {
-    createPost(
-      userId: String!
-      description: String!
-    ): Post
+    createUser(
+      username: String!
+      email: String!
+      password: String!
+      status: Int!
+      firstName: String
+      lastName: String
+    ): User
   }
 `;

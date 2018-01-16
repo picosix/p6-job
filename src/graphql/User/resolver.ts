@@ -1,20 +1,24 @@
-const posts = [
+const users = [
   {
     id: "random",
-    userId: "random",
-    description: "A funny description ..."
+    username: "picosix",
+    email: "picosix.com@gmail.com",
+    password: "12345",
+    status: 1,
+    firstName: "Tuan",
+    lastName: "Nguyen"
   }
 ];
 
 export default {
   Query: {
-    async posts(obj = {}, args = {}, context = {}, info = {}) {
-      return posts;
+    async users(obj = {}, args = {}, context = {}, info = {}) {
+      return users;
     }
   },
   Mutation: {
-    async createPost(obj = {}, args = {}, context = {}, info = {}) {
-      return posts[0];
+    async createUser(obj = {}, args = {}, context = {}, info = {}) {
+      return users[0];
     }
   }
 };
