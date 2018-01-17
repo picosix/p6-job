@@ -1,26 +1,36 @@
 export default `
+  type UserProfile {
+    firstName: String
+    lastName: String
+    avatar: String
+  }
+  
   type User {
     _id: ID!
     username: String!
     email: String!
     password: String!
     status: Int!
-    firstName: String
-    lastName: String
+    profile: UserProfile
   }
 
   type Query {
     users: [User!]
   }
 
+  input Profile {
+    firstName: String
+    lastName: String
+    avatar: String
+  }
+
   type Mutation {
-    createUser(
+    addUser(
       username: String!
       email: String!
       password: String!
       status: Int!
-      firstName: String
-      lastName: String
+      profile: Profile
     ): User!
   }
 `;

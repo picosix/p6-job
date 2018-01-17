@@ -35,18 +35,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-var User_1 = require("./User");
-var users = [
-    {
-        id: "random",
-        username: "picosix",
-        email: "picosix.com@gmail.com",
-        password: "12345",
-        status: 1,
-        firstName: "Tuan",
-        lastName: "Nguyen"
-    }
-];
+var User_1 = require("./models/User");
 exports["default"] = {
     Query: {
         users: function (obj, args, context, info) {
@@ -62,20 +51,19 @@ exports["default"] = {
         }
     },
     Mutation: {
-        createUser: function (obj, _a, context, info) {
+        addUser: function (obj, _a, context, info) {
             if (obj === void 0) { obj = {}; }
-            var _b = _a.username, username = _b === void 0 ? "" : _b, _c = _a.email, email = _c === void 0 ? "" : _c, _d = _a.password, password = _d === void 0 ? "" : _d, _e = _a.status, status = _e === void 0 ? "" : _e, _f = _a.firstName, firstName = _f === void 0 ? "" : _f, _g = _a.lastName, lastName = _g === void 0 ? "" : _g;
+            var _b = _a.username, username = _b === void 0 ? "" : _b, _c = _a.email, email = _c === void 0 ? "" : _c, _d = _a.password, password = _d === void 0 ? "" : _d, _e = _a.status, status = _e === void 0 ? "" : _e, _f = _a.profile, profile = _f === void 0 ? {} : _f;
             if (context === void 0) { context = {}; }
             if (info === void 0) { info = {}; }
             return __awaiter(this, void 0, void 0, function () {
-                return __generator(this, function (_h) {
+                return __generator(this, function (_g) {
                     return [2 /*return*/, User_1["default"].create({
                             username: username,
                             email: email,
                             password: password,
                             status: status,
-                            firstName: firstName,
-                            lastName: lastName
+                            profile: profile
                         }).then(function (user) { return user.toObject(); })];
                 });
             });

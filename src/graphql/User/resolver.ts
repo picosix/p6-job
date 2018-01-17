@@ -1,16 +1,4 @@
-import { default as User } from "./User";
-
-const users = [
-  {
-    id: "random",
-    username: "picosix",
-    email: "picosix.com@gmail.com",
-    password: "12345",
-    status: 1,
-    firstName: "Tuan",
-    lastName: "Nguyen"
-  }
-];
+import { default as User } from "./models/User";
 
 export default {
   Query: {
@@ -19,16 +7,9 @@ export default {
     }
   },
   Mutation: {
-    async createUser(
+    async addUser(
       obj = {},
-      {
-        username = "",
-        email = "",
-        password = "",
-        status = "",
-        firstName = "",
-        lastName = ""
-      },
+      { username = "", email = "", password = "", status = "", profile = {} },
       context = {},
       info = {}
     ) {
@@ -37,8 +18,7 @@ export default {
         email,
         password,
         status,
-        firstName,
-        lastName
+        profile
       }).then(user => user.toObject());
     }
   }
