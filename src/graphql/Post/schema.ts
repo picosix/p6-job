@@ -1,6 +1,6 @@
 export default `
   type Post {
-    id: ID!
+    _id: ID!
     userId: String!
     description: String!
   }

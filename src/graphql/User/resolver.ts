@@ -1,3 +1,5 @@
+import { default as User } from "./User";
+
 const users = [
   {
     id: "random",
@@ -13,12 +15,31 @@ const users = [
 export default {
   Query: {
     async users(obj = {}, args = {}, context = {}, info = {}) {
-      return users;
+      return User.find({}).exec();
     }
   },
   Mutation: {
-    async createUser(obj = {}, args = {}, context = {}, info = {}) {
-      return users[0];
+    async createUser(
+      obj = {},
+      {
+        username = "",
+        email = "",
+        password = "",
+        status = "",
+        firstName = "",
+        lastName = ""
+      },
+      context = {},
+      info = {}
+    ) {
+      return User.create({
+        username,
+        email,
+        password,
+        status,
+        firstName,
+        lastName
+      }).then(user => user.toObject());
     }
   }
 };

@@ -1,6 +1,6 @@
 export default `
   type User {
-    id: ID!
+    _id: ID!
     username: String!
     email: String!
     password: String!
@@ -21,6 +21,6 @@ export default `
       status: Int!
       firstName: String
       lastName: String
-    ): User
+    ): User!
   }
 `;

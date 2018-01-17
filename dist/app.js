@@ -11,7 +11,7 @@ var db_1 = require("./db");
 // Create Express server
 var app = express();
 // Express configuration
-app.set("port", process.env.PORT || 9999);
+app.set("port", settings_1.port);
 app.use(compression());
 app.use(logger("dev"));
 app.use(bodyParser.json());

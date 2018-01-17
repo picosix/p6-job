@@ -1,4 +1,5 @@
 import * as express from "express";
+import { Request } from "express";
 import * as bodyParser from "body-parser";
 import * as compression from "compression";
 import * as logger from "morgan";
@@ -7,7 +8,7 @@ import { graphqlExpress, graphiqlExpress } from "apollo-server-express";
 import { importSchema } from "graphql-import";
 import { makeExecutableSchema } from "graphql-tools";
 
-import { debug, endpoint } from "./settings";
+import { port, debug, endpoint } from "./settings";
 import schema from "./graphql";
 import db from "./db";
 
@@ -15,7 +16,7 @@ import db from "./db";
 const app = express();
 
 // Express configuration
-app.set("port", process.env.PORT || 9999);
+app.set("port", port);
 app.use(compression());
 app.use(logger("dev"));
 app.use(bodyParser.json());
@@ -25,7 +26,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(
   `/${endpoint}`,
   bodyParser.json(),
-  graphqlExpress(req => {
+  graphqlExpress((req: Request) => {
     return {
       schema,
       context: {

@@ -16,7 +16,7 @@
     "debug": "npm run build && npm run watch-debug",
     "serve-debug": "nodemon --inspect dist/server.js",
     "watch-debug": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"cyan.bold,green.bold\" \"yarn watch-ts\" \"yarn serve-debug\"",
-    "seed": "ts-node"
+    "test": "node -r dotenv/config ./node_modules/.bin/jest"
   },
   "devDependencies": {
     "@types/bluebird": "^3.5.19",
@@ -29,8 +29,11 @@
     "@types/mongoose": "^4.7.32",
     "@types/morgan": "^1.7.35",
     "@types/shelljs": "^0.7.7",
+    "chai": "^4.1.2",
     "concurrently": "^3.5.1",
     "faker": "^4.1.0",
+    "graphql-tester": "^0.0.5",
+    "jest": "^22.1.2",
     "nodemon": "^1.14.10",
     "prettier": "^1.10.1",
     "shelljs": "^0.7.8",
