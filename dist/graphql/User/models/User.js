@@ -2,7 +2,8 @@
 exports.__esModule = true;
 var mongoose = require("mongoose");
 var bluebird = require("bluebird");
-var lodash_1 = require("lodash");
+var _ = require("lodash");
+var bcrypt = require("bcrypt");
 mongoose.Promise = bluebird;
 // Constants
 exports.STATUS_BLOCKED = -1;
@@ -27,10 +28,24 @@ var userSchema = new mongoose.Schema({
     }
 }, { timestamps: true });
 userSchema.pre("save", function preSave(next) {
+    var _this = this;
     // Both username and email must be in lowercase
-    this.username = lodash_1.toLower(this.username);
-    this.email = lodash_1.toLower(this.email);
-    next();
+    if (this.isModified("username")) {
+        this.username = _.toLower(this.username);
+    }
+    if (this.isModified("email")) {
+        this.email = _.toLower(this.email);
+    }
+    if (!this.isModified("password")) {
+        return next();
+    }
+    // Hash password if it is changed
+    bcrypt
+        .hash(this.password, 10)
+        .then(function (hash) {
+        _this.password = hash;
+        return next();
+    })["catch"](next);
 });
 // Defined model
 var User = mongoose.model("User", userSchema);

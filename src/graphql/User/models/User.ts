@@ -1,6 +1,7 @@
 import * as mongoose from "mongoose";
 import * as bluebird from "bluebird";
-import { toLower } from "lodash";
+import * as _ from "lodash";
+import * as bcrypt from "bcrypt";
 
 (<any>mongoose).Promise = bluebird;
 
@@ -48,9 +49,25 @@ const userSchema = new mongoose.Schema(
 
 userSchema.pre("save", function preSave(next) {
   // Both username and email must be in lowercase
-  this.username = toLower(this.username);
-  this.email = toLower(this.email);
-  next();
+  if (this.isModified("username")) {
+    this.username = _.toLower(this.username);
+  }
+  if (this.isModified("email")) {
+    this.email = _.toLower(this.email);
+  }
+
+  if (!this.isModified("password")) {
+    return next();
+  }
+
+  // Hash password if it is changed
+  bcrypt
+    .hash(this.password, 10)
+    .then((hash: String) => {
+      this.password = hash;
+      return next();
+    })
+    .catch(next);
 });
 
 // Defined model

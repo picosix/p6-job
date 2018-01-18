@@ -5,7 +5,6 @@ import * as compression from "compression";
 import * as logger from "morgan";
 
 import { graphqlExpress, graphiqlExpress } from "apollo-server-express";
-import { importSchema } from "graphql-import";
 import { makeExecutableSchema } from "graphql-tools";
 
 import { port, debug, endpoint } from "./settings";
