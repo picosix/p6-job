@@ -25,6 +25,11 @@ export default `
     avatar: String
   }
 
+  input UserAttributes {
+    status: Int!
+    profile: UserProfile
+  }
+
   type Mutation {
     addUser(
       username: String!
@@ -33,5 +38,6 @@ export default `
       status: Int!
       profile: UserProfile
     ): User!
+    updateUser(_id: String, attributes: UserAttributes): User!
   }
 `;

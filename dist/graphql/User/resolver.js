@@ -69,14 +69,41 @@ exports["default"] = {
             if (context === void 0) { context = {}; }
             if (info === void 0) { info = {}; }
             return __awaiter(this, void 0, void 0, function () {
+                var user;
                 return __generator(this, function (_g) {
-                    return [2 /*return*/, User_1["default"].create({
-                            username: username,
-                            email: email,
-                            password: password,
-                            status: status,
-                            profile: profile
-                        }).then(function (user) { return user.toObject(); })];
+                    switch (_g.label) {
+                        case 0: return [4 /*yield*/, User_1["default"].create({
+                                username: username,
+                                email: email,
+                                password: password,
+                                status: status,
+                                profile: profile
+                            })];
+                        case 1:
+                            user = _g.sent();
+                            return [2 /*return*/, user.toObject()];
+                    }
+                });
+            });
+        },
+        updateUser: function (obj, args, context, info) {
+            if (obj === void 0) { obj = {}; }
+            if (context === void 0) { context = {}; }
+            if (info === void 0) { info = {}; }
+            return __awaiter(this, void 0, void 0, function () {
+                var _id, attributes, user, updatedUser;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0:
+                            _id = args._id, attributes = args.attributes;
+                            return [4 /*yield*/, User_1["default"].findByIdAndUpdate(_id, attributes)];
+                        case 1:
+                            user = _a.sent();
+                            return [4 /*yield*/, User_1["default"].findById(user._id)];
+                        case 2:
+                            updatedUser = _a.sent();
+                            return [2 /*return*/, updatedUser.toObject()];
+                    }
                 });
             });
         }

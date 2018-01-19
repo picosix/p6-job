@@ -1,7 +1,14 @@
-import { default as User } from "./models/User";
+import { default as User, Profile } from "./models/User";
 
-type UserId = {
+type GetUserInput = {
   _id: String;
+};
+type UpdateUserInput = {
+  _id: string;
+  attributes: {
+    status: number;
+    profile: Profile;
+  };
 };
 
 export default {
@@ -9,7 +16,7 @@ export default {
     async users(obj = {}, args = {}, context = {}, info = {}) {
       return User.find({}).exec();
     },
-    async user(obj = {}, args: UserId, context = {}, info = {}) {
+    async user(obj = {}, args: GetUserInput, context = {}, info = {}) {
       const { _id } = args;
       return User.findById(_id);
     }
@@ -21,13 +28,21 @@ export default {
       context = {},
       info = {}
     ) {
-      return User.create({
+      const user = await User.create({
         username,
         email,
         password,
         status,
         profile
-      }).then(user => user.toObject());
+      });
+      return user.toObject();
+    },
+    async updateUser(obj = {}, args: UpdateUserInput, context = {}, info = {}) {
+      const { _id, attributes } = args;
+      // Result of mongoose.findByIdAndUpdate is the document BEFORE updated
+      const user = await User.findByIdAndUpdate(_id, attributes);
+      const updatedUser = await User.findById(user._id);
+      return updatedUser.toObject();
     }
   }
 };

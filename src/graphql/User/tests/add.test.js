@@ -2,13 +2,13 @@ const faker = require("faker");
 const _ = require("lodash");
 const server = require("./server");
 
-describe("Create users", () => {
-  it("should return array users", done => {
+describe("Create user", () => {
+  it("should return user has been created", done => {
     const user = {
       username: faker.internet.userName(),
       email: faker.internet.email(),
       password: faker.internet.password(),
-      status: 1,
+      status: 0,
       profile: {
         firstName: faker.name.findName(),
         lastName: faker.name.lastName(),
