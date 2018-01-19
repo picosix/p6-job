@@ -39,5 +39,6 @@ export default `
       profile: UserProfile
     ): User!
     updateUser(_id: String, attributes: UserAttributes): User!
+    removeUser(_id: String): User!
   }
 `;

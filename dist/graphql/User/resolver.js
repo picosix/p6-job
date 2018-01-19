@@ -106,6 +106,24 @@ exports["default"] = {
                     }
                 });
             });
+        },
+        removeUser: function (obj, args, context, info) {
+            if (obj === void 0) { obj = {}; }
+            if (context === void 0) { context = {}; }
+            if (info === void 0) { info = {}; }
+            return __awaiter(this, void 0, void 0, function () {
+                var _id, user;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0:
+                            _id = args._id;
+                            return [4 /*yield*/, User_1["default"].findByIdAndRemove(_id)];
+                        case 1:
+                            user = _a.sent();
+                            return [2 /*return*/, user.toObject()];
+                    }
+                });
+            });
         }
     }
 };
