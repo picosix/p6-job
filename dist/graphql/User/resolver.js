@@ -48,6 +48,18 @@ exports["default"] = {
                     return [2 /*return*/, User_1["default"].find({}).exec()];
                 });
             });
+        },
+        user: function (obj, args, context, info) {
+            if (obj === void 0) { obj = {}; }
+            if (context === void 0) { context = {}; }
+            if (info === void 0) { info = {}; }
+            return __awaiter(this, void 0, void 0, function () {
+                var _id;
+                return __generator(this, function (_a) {
+                    _id = args._id;
+                    return [2 /*return*/, User_1["default"].findById(_id)];
+                });
+            });
         }
     },
     Mutation: {

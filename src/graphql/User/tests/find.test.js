@@ -1,9 +1,12 @@
 const faker = require("faker");
 const _ = require("lodash");
+const bluebird = require("bluebird");
 const server = require("./server");
 
-describe("Create users", () => {
-  it("should return array users", done => {
+describe("Find one user", () => {
+  let _id = "5a60b2c4b8146402b23388bb";
+
+  beforeAll(() => {
     const user = {
       username: faker.internet.userName(),
       email: faker.internet.email(),
@@ -15,7 +18,8 @@ describe("Create users", () => {
         avatar: faker.image.avatar()
       }
     };
-    server(
+
+    return server(
       JSON.stringify({
         query: `
          mutation addUser($username: String!, $email: String!, $password: String!, $status: Int!, $profile: Profile) {
@@ -33,13 +37,37 @@ describe("Create users", () => {
         }`,
         variables: user
       })
+    ).then(res => {
+      expect(res.status).toBe(200);
+      expect(res.data.user._id).toBeTruthy();
+      expect(res.data.user.username).toBe(_.toLower(user.username));
+      expect(res.data.user.email).toBe(_.toLower(user.email));
+      expect(res.data.user.profile).toBeTruthy();
+      _id = res.data.user._id;
+      return bluebird.resolve(res.data.user);
+    });
+  });
+
+  it("should return user with _id", done => {
+    server(
+      JSON.stringify({
+        query: `
+        query findUser($_id: String!) {
+          user(_id: $_id) {
+            _id,
+            username
+          }
+        }`,
+        variables: {
+          _id
+        }
+      })
     )
       .then(res => {
         expect(res.status).toBe(200);
-        expect(res.data.user._id).toBeTruthy();
-        expect(res.data.user.username).toBe(_.toLower(user.username));
-        expect(res.data.user.email).toBe(_.toLower(user.email));
-        expect(res.data.user.profile).toBeTruthy();
+        expect(res.data.user).toBeTruthy();
+        expect(res.data.user._id).toBe(_id);
+        expect(res.data.user.username).toBeTruthy();
         done();
       })
       .catch(err => {

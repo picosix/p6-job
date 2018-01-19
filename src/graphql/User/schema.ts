@@ -15,7 +15,8 @@ export default `
   }
 
   type Query {
-    users: [User!]
+    users: [User!],
+    user(_id: String): User!
   }
 
   input Profile {
