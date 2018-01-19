@@ -3,13 +3,13 @@ const _ = require("lodash");
 const bluebird = require("bluebird");
 
 const server = require("./server");
-const createUser = require("./_createUser");
+const utils = require("./utils");
 
 describe("Update user", () => {
   let _id;
 
   beforeAll(async () => {
-    const user = await createUser;
+    const user = await utils.createUser;
     _id = user._id;
     return user;
   });

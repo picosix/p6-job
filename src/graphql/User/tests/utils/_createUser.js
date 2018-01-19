@@ -2,7 +2,7 @@ const faker = require("faker");
 const _ = require("lodash");
 const bluebird = require("bluebird");
 
-const server = require("./server");
+const server = require("../server");
 
 const user = {
   username: faker.internet.userName(),
