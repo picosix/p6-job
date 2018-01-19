@@ -18,7 +18,7 @@ describe("Create users", () => {
     server(
       JSON.stringify({
         query: `
-         mutation addUser($username: String!, $email: String!, $password: String!, $status: Int!, $profile: Profile) {
+         mutation addUser($username: String!, $email: String!, $password: String!, $status: Int!, $profile: UserProfile) {
           user: addUser(username: $username, email: $email, password: $password, status: $status, profile: $profile) {
             _id
             username

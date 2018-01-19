@@ -1,5 +1,5 @@
 export default `
-  type UserProfile {
+  type Profile {
     firstName: String
     lastName: String
     avatar: String
@@ -11,7 +11,7 @@ export default `
     email: String!
     password: String!
     status: Int!
-    profile: UserProfile
+    profile: Profile
   }
 
   type Query {
@@ -19,7 +19,7 @@ export default `
     user(_id: String): User!
   }
 
-  input Profile {
+  input UserProfile {
     firstName: String
     lastName: String
     avatar: String
@@ -31,7 +31,7 @@ export default `
       email: String!
       password: String!
       status: Int!
-      profile: Profile
+      profile: UserProfile
     ): User!
   }
 `;
