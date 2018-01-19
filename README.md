@@ -8,6 +8,26 @@
 
 [Demo](http://job.picosix.info/graphiql?query=query%20%7B%0A%20%20users%20%7B%0A%20%20%20%20_id%0A%20%20%20%20username%0A%20%20%7D%0A%7D)
 
+# Development
+
+- Mongo
+
+```shell
+$ docker run -d --restart always --name mongo -p 27017:27017 -v $(pwd)/backup:/backup mongo:3
+```
+
+- Nginx Proxy
+
+```shell
+$ docker run -d --restart always --name nginx-proxy -p 80:80 -p 443:443 -v $(pwd)/certs:/etc/nginx/certs -v /var/run/docker.sock:/tmp/docker.sock:ro picosix/nginx-proxy
+```
+
+- Node
+
+```shell
+$ docker run -d -e VIRTUAL_HOST=job.picosix.local --restart always --name p6-job-node -v $(pwd):/app --link mongo:mongo picosix/node yarn start
+```
+
 ## Documents
 
 0. Note
