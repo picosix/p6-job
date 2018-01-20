@@ -1,7 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const compression = require("compression");
-const logger = require("morgan");
 const { graphqlExpress, graphiqlExpress } = require("apollo-server-express");
 const { makeExecutableSchema } = require("graphql-tools");
 
@@ -14,9 +13,7 @@ const app = express();
 // Express configuration
 app.set("port", port);
 app.use(compression());
-app.use(logger("dev"));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 
 // The GraphQL endpoint
 app.use(

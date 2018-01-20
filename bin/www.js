@@ -1,15 +1,17 @@
 const errorHandler = require("errorhandler");
+const morgan = require("morgan");
 
 const { debug } = require("../src/settings");
 const app = require("../src/app");
 const db = require("../src/db");
 
 /**
- * Error Handler. Provides full stack
- * Remove fro production
+ * Error Handler. Provides full stack. Remove fro production
+ * HTTP request logger middleware
  */
 if (debug) {
   app.use(errorHandler());
+  app.use(morgan("dev"));
 }
 
 /**
