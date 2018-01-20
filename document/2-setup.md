@@ -100,7 +100,7 @@ sau đó chạy câu query (click button play bên phải logo GraphiQL) thì s�
 
 Khi tương tác với GraphQL, các bạn cần phải **định nghĩa** cách client muốn lấy dữ liệu (`query` và `mutation`) và cách server sẽ trả về dữ liệu dựa trên truy vấn của client. Nếu trong một ứng dụng sử dụng REST, chúng ta thường sẽ có hai dạng endpoint - lấy dữ liệu (`GET`) và cập nhật dữ liệu (`POST`, `PUT`, `DELETE`), thì ở GraphQL chúng ta cũng có hai dạng endpoint tương ứng là `Query` và `Mutation`.
 
-Bất kể `Query` hay `Mutation` thì khi định nghĩa chúng, chúng ta phải khai báo kiểu dữ liệu mà chúng sẽ nhận - tương tự như cách mà các`Statically typed languages`địng nghĩa như Java, C, C++. Ví dụ bạn muốn lấy các`Book`từ server, mỗi`Book`bạn muốn lấy`title`và`author`. Cả hai field`title`và`author`bạn chỉ muốn nhận về là`String`mà không phải là`undefined`,`null`hay`object`, ... Để làm được việc đó, bạn phải định nghĩa ở server để Book chỉ nhận về kiểu`String`cho hai field trên. Thế là`type` ra đời - [scalar-types](http://graphql.org/learn/schema/#scalar-types)
+Bất kể `Query` hay `Mutation` thì khi định nghĩa chúng, chúng ta phải khai báo kiểu dữ liệu mà chúng sẽ nhận - tương tự như cách mà các `Statically typed languages` địng nghĩa như Java, C, C++. Ví dụ bạn muốn lấy các `Book` từ server, mỗi `Book` bạn muốn lấy `title` và `author`. Cả hai field `title` và `author` bạn chỉ muốn nhận về là `String` mà không phải là `undefined`, `null` hay `object`, ... Để làm được việc đó, bạn phải định nghĩa ở server để Book chỉ nhận về kiểu `String` cho hai field trên. Thế là `type` ra đời - [scalar-types](http://graphql.org/learn/schema/#scalar-types)
 
 ```
 ...
@@ -122,25 +122,6 @@ type Query { books: [Book] }
 ...
 ```
 
-Ở đây, chúng ta muốn client có thể lấy về `books` là một array của các `Book`. Và như demo ở trên, các bạn sẽ lấy được hai `Book`. Vậy điều gì sẽ xảy ra khi chúng ta trả về hai `Book` nhưng một trong số chúng là `undefined`, là `null` mà không phải một `Book`? Câu trả lời là `Không gì cả`
-
-Các bạn sửa lại đoạn code sau
-
-```javascript
-...
-
-// Some fake data
-const books = [
-  {
-    title: "Harry Potter and the Sorcerer's stone",
-    author: 'J.K. Rowling',
-  },
-  null
-];
-
-....
-```
-
 Ở đây, chúng ta muốn client có thể lấy về `books` là một array của các `Book`. Và như demo ở trên, các bạn sẽ lấy được hai `Book`. Vậy điều gì sẽ xảy ra khi chúng ta trả về hai `Book` nhưng một trong số chúng là `undefined`, là `null`, là `false` mà không phải một `Book`? Câu trả lời là `Không gì cả`
 
 Các bạn sửa lại đoạn code sau
@@ -160,7 +141,7 @@ const books = [
 ....
 ```
 
-Có vẻ sai sai ở đây, vì chúng ta muốn kết quả trả về là array của `Book`??? Đó là vì bạn cho phép server sẽ trả về kết quả không phải là `instance` của `Book`, mà có thể trả về `null`. Để thực hiện việc ràng buộc, chúng ta thêm dấu `!` ngay phía sau `Book`, như thế này
+Khi bạn test lại câu query một lần nữa tại [http://localhost:3000/graphiql](http://localhost:3000/graphiql) thì bạn sẽ thấy kết quả trả vễ vẫn là hai `Book` nhưng một trong số chúng là `null`. Có vẻ sai sai ở đây, vì chúng ta muốn kết quả trả về là array của `Book`??? Đó là vì bạn cho phép server sẽ trả về kết quả không phải là `instance` của `Book`, mà có thể trả về `null`. Để thực hiện việc ràng buộc, chúng ta thêm dấu `!` ngay phía sau `Book`, như thế này
 
 ```
 ...
@@ -201,3 +182,9 @@ Query: { books: async () => books },
 ```
 
 Resolver sẽ nhận kết quả trở về là một `Promise`. Ở đây khi client query `books` chúng ta sẽ trả về kết quả - có thể từ bất cứ đâu mà bạn muốn, từ database ở local hay ở remote server, hoặc từ một api khác, ...
+
+## Bài tập
+
+Ở bài này, mình chỉ mới giới thiệu sơ qua về cách mà chúng ta sử dụng GraphQL. Các bạn cần phải đọc một số phần về cách khai báo `type`, `input` ở trang chủ của GraphQL ([http://graphql.org](http://graphql.org/learn/schema/)) để hiểu rõ hơn về cách một ứng dụng sử dụng GraphQL.
+
+Ở bài sau mình sẽ đi sâu hơn về GraphQL, bao gồm Khai báo kiểu dữ liệu, Khai báo `Mutation` và Sử dụng với Apollo Server.
