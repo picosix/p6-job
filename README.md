@@ -37,6 +37,7 @@ $ docker run -d -e VIRTUAL_HOST=job.picosix.local --restart always --name p6-job
 1. [Giới thiệu project](./document/0-introduce-project.md)
 2. [Giới thiệu tài liệu học tập](./document/1-introduce-documents.md)
 3. [Setup GraphQL server](./document/2-setup.md)
+4. [Sử dụng `Mutation`](./document/3-mutation.md)
 
 ## Mục đích project này gồm
 
