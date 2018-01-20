@@ -1,46 +1,15 @@
 {
-  "name": "p6-job",
+  "name": "job-api.picosix.info",
   "version": "0.0.1",
   "description": "Don't just build a to do project, build a real-work project",
+  "main": "index.js",
   "author": "Tuan Nguyen <picosix.com@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "yarn serve",
-    "serve": "node dist/server.js",
-    "build": "yarn build-ts && yarn tslint",
-    "watch-node": "nodemon dist/server.js",
-    "watch": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"cyan.bold,green.bold\" \"yarn watch-ts\" \"yarn watch-node\"",
-    "build-ts": "tsc",
-    "watch-ts": "tsc -w",
-    "tslint": "tslint -c tslint.json -p tsconfig.json",
-    "debug": "npm run build && npm run watch-debug",
-    "serve-debug": "nodemon --inspect dist/server.js",
-    "watch-debug": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"cyan.bold,green.bold\" \"yarn watch-ts\" \"yarn serve-debug\"",
-    "test": "node -r dotenv/config ./node_modules/.bin/jest"
-  },
-  "devDependencies": {
-    "@types/bcrypt": "^1.0.0",
-    "@types/bluebird": "^3.5.19",
-    "@types/body-parser": "^1.16.8",
-    "@types/compression": "^0.0.35",
-    "@types/dotenv": "^4.0.2",
-    "@types/errorhandler": "^0.0.32",
-    "@types/express": "^4.11.0",
-    "@types/graphql": "^0.11.7",
-    "@types/lodash": "^4.14.92",
-    "@types/mongoose": "^4.7.32",
-    "@types/morgan": "^1.7.35",
-    "@types/shelljs": "^0.7.7",
-    "concurrently": "^3.5.1",
-    "faker": "^4.1.0",
-    "graphql-tester": "^0.0.5",
-    "jest": "^22.1.2",
-    "nodemon": "^1.14.10",
-    "prettier": "^1.10.1",
-    "shelljs": "^0.7.8",
-    "ts-node": "^4.1.0",
-    "tslint": "^5.8.0",
-    "typescript": "^2.6.2"
+    "start": "",
+    "start-dev": "node -r dotenv/config ./node_modules/.bin/nodemon bin/www.js",
+    "test": "node -r dotenv/config ./node_modules/.bin/jest",
+    "precommit": "pretty-quick --staged"
   },
   "dependencies": {
     "apollo-server-express": "^1.3.2",
@@ -54,7 +23,16 @@
     "graphql": "^0.12.3",
     "graphql-tools": "^2.18.0",
     "lodash": "^4.17.4",
-    "mongoose": "^4.13.9",
+    "mongoose": "^5.0.0",
     "morgan": "^1.9.0"
+  },
+  "devDependencies": {
+    "faker": "^4.1.0",
+    "graphql-tester": "^0.0.5",
+    "husky": "^0.14.3",
+    "jest": "^22.1.4",
+    "nodemon": "^1.14.11",
+    "prettier": "^1.10.2",
+    "pretty-quick": "^1.2.2"
   }
 }

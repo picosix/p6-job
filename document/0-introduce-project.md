@@ -3,7 +3,6 @@
 Với project này, mình tập trung giới thiệu một số vấn đề sau
 
 * NodeJS
-* NodeJS với TypeScript
 * MongoDB
 * Docker
 * Deploy code
@@ -15,10 +14,6 @@ Bởi vì mình muốn giảm thời gian học của mình lại. Mình luôn c
 Bởi vì nó phổ biến. Mặc dù nó không hoàn thiện, nhưng nó được nhiều người sử dụng. Tài liệu, hướng dẫn dồi dào. Cộng đồng to lớn.
 
 Bởi vì mình muốn làm việc với javascript. Lý do này thì khỏi cần giải thích. Mỗi ngôn ngữ có ưu điểm và nhược điểm riêng (giống với người con gái mà bạn yêu <3). Mình chấp nhận những nhược điểm của javascript để sử dụng những ưu điểm của nó.
-
-## Tại sao là Typescript?
-
-Trong quá trình sử dụng javascript, mình nhận thấy một trong những bug khó debug nhất là truyền sai kiểu dữ liệu dẫn đến javascript sẽ thực hiện coercion. Do đó mình luôn phải kiểm tra kiểu dữ liệu mà mình sử dụng, lần này qua lần khác, project này đến project khác. Mà miễn một việc mình làm hai lần thì mình sẽ tìm giải pháp để làm chỉ một và một lần :D Thế là mình tìm ra được Typescript với `static typing`
 
 ## Tại sao là MongoDB?
 

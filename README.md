@@ -2,7 +2,7 @@
 
 # p6-job
 
-> Xây dựng dự án thật tế bằng NodeJS, Typescript và GraphQL
+> Xây dựng dự án thật tế bằng NodeJS và GraphQL
 
 ## Demo
 
@@ -10,19 +10,19 @@
 
 # Development
 
-- Mongo
+* Mongo
 
 ```shell
 $ docker run -d --restart always --name mongo -p 27017:27017 -v $(pwd)/backup:/backup mongo:3
 ```
 
-- Nginx Proxy
+* Nginx Proxy
 
 ```shell
 $ docker run -d --restart always --name nginx-proxy -p 80:80 -p 443:443 -v $(pwd)/certs:/etc/nginx/certs -v /var/run/docker.sock:/tmp/docker.sock:ro picosix/nginx-proxy
 ```
 
-- Node
+* Node
 
 ```shell
 $ docker run -d -e VIRTUAL_HOST=job.picosix.local --restart always --name p6-job-node -v $(pwd):/app --link mongo:mongo picosix/node yarn start
@@ -39,7 +39,7 @@ $ docker run -d -e VIRTUAL_HOST=job.picosix.local --restart always --name p6-job
 
 ## Mục đích project này gồm
 
-* Mình học Typescript và GraphQL
+* Mình học GraphQL
 * Hướng dẫn các bạn học NodeJS, cách deploy một project thực tế lên VPS
 * Tạo ra một nơi để mọi người có thể cùng nhau làm việc
 
@@ -47,7 +47,7 @@ $ docker run -d -e VIRTUAL_HOST=job.picosix.local --restart always --name p6-job
 
 Những thành viên tham gia có thể
 
-* Sử dụng NodeJS, Typescript, GraphQL ở mức cơ bản
+* Sử dụng NodeJS, GraphQL ở mức cơ bản
 * Biết cách viết test và test một dự án có nhiều thành viên
 * Biết cách deploy project lên VPS
 
@@ -56,7 +56,7 @@ Những thành viên tham gia có thể
 1. Tháng đầu tiên - Làm quen với project (@picoxis)
 
 * Viết và cập nhật plan cho project (1 tuần)
-* Viết document đơn giản để hướng dẫn mọi người về NodeJS, Typescript, GraphQL (2 tuần)
+* Viết document đơn giản để hướng dẫn mọi người về NodeJS, GraphQL (2 tuần)
 * Design database, structure của project, ...
 * Setup môi trường development
 * Trao đổi phương án làm việc, cập nhật thành viên
