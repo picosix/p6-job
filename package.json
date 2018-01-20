@@ -12,6 +12,7 @@
     "precommit": "pretty-quick --staged"
   },
   "dependencies": {
+    "ajv": "^6.0.1",
     "apollo-server-express": "^1.3.2",
     "bcrypt": "^1.0.3",
     "bluebird": "^3.5.1",
