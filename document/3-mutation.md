@@ -6,11 +6,11 @@
 * Giới thiệu các khai báo `Mutation`
 * Sử dụng `Mutation` với Apollo Server
 
-## Khai báo `type User`
+## Sử dụng `Mutation`
 
 Như ở bài trước mình đã giới thiệu, để có thể truy vấn dữ liệu với GraphQL thì chúng ta cần phải khai báo `Query`. Tương ứng với việc tạo mới, cập nhật và xoá dữ liệu thì chúng ta có `Mutation`. Trong bài này, mình sẽ sử dụng ví dụ với data của một `User`
 
-## Khai báo `type User`
+### Khai báo `type User`
 
 Các bạn còn nhớ đoạn khai báo biến `typeDefs` ở bài trước? Chúng ta cần sửa lại như sau
 
@@ -66,7 +66,7 @@ Giờ thì bạn có thể test lại với câu query như sau
 
 ![Query users](./static/3/find-all-users.png)
 
-## Khai báo Mutation
+### Khai báo Mutation
 
 Để khai báo `Mutation`, bạn cần sửa thêm `type Mutation` vào biến `typeDefs` như sau
 
@@ -182,7 +182,7 @@ Tiếp theo các bạn có thể test bằng câu query như sau
 
 Lưu ý là khung `QUERIES VARIABLES` nằm sát góc dưới bên trái, các bạn có thể kéo nó lên để truyền vào các biến của bạn
 
-## Khai báo `input UserAttributes`
+### Khai báo `input UserAttributes`
 
 Ở phần trên, nếu muốn tạo user, các bạn cần phải truyền 4 biến vào cho hàm `addUser`, vậy nếu chúng ta có nhiều biến hơn thì sao? Và nếu bạn có thêm một hàm nữa cũng nhận tham số giống như vậy? Đó là lúc chúng ta sử dụng một kiểu data của GraphQL để có thể khai báo input đầu vào và tái sử dụng ở các hànm khác khau - đó là `input`.
 
