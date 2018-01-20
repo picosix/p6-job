@@ -89,7 +89,7 @@ Trong đó chúng ta khai báo hai `express middleware` để sử dụng GraphQ
 * `graphqlExpress` dùng để khai báo các setting cho ứng dụng GraphQL. Hiện tại các bạn chỉ cần chú ý đến biến `schema` - là nơi để khai báo các câu query của GraphQL
 * `graphiqlExpress` dùng để cài đặt một editor để test GraphQL trên giao diện web
 
-Ok giờ là lúc bạn test thử sản phẩm ban đầu. Bạn vào [http://localhost:3000/graphiql](http://localhost:3000/graphiql) và thực hiện câu query,
+Ok giờ là lúc bạn test thử sản phẩm ban đầu (Dành cho bạn nào quên `$ node src/app.js`). Bạn vào [http://localhost:3000/graphiql](http://localhost:3000/graphiql) và thực hiện câu query,
 sau đó chạy câu query (click button play bên phải logo GraphiQL) thì sẽ được kết quả
 
 ![Query demo](./static/2/graphiql-demo.png)
