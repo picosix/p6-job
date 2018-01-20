@@ -98,11 +98,9 @@ sau đó chạy câu query (click button play bên phải logo GraphiQL) thì s�
 
 ### typeDefs
 
-Khi tương tác với GraphQL, các bạn cần phải **định nghĩa** cách client muốn lấy dữ liệu (`query` và `mutation`) và cách server sẽ trả về dữ liệu dựa trên truy vấn của client (`resolvers`)ả
+Khi tương tác với GraphQL, các bạn cần phải **định nghĩa** cách client muốn lấy dữ liệu (`query` và `mutation`) và cách server sẽ trả về dữ liệu dựa trên truy vấn của client. Nếu trong một ứng dụng sử dụng REST, chúng ta thường sẽ có hai dạng endpoint - lấy dữ liệu (`GET`) và cập nhật dữ liệu (`POST`, `PUT`, `DELETE`), thì ở GraphQL chúng ta cũng có hai dạng endpoint tương ứng là `Query` và `Mutation`.
 
-Trong một ứng dụng sử dụng REST, chúng ta thường sẽ có hai dạng endpoint - lấy dữ liệu (`GET`) và cập nhật dữ liệu (`POST`, `PUT`, `DELETE`), thì ở GraphQL chúng ta cũng có hai dạng endpoint tương ứng là `Query` và `Mutation`.
-
-Bất kể Query`hay`Mutation`thì khi định nghĩa chúng, chúng ta phải khai báo kiểu dữ liệu mà chúng sẽ nhận - tương tự như cách mà các`Statically typed languages`địng nghĩa như Java, C, C++. Ví dụ bạn muốn lấy các`Book`từ server, mỗi`Book`bạn muốn lấy`title`và`author`. Cả hai field`title`và`author`bạn chỉ muốn nhận về là`String`mà không phải là`undefined`,`null`hay`object`, ... Để làm được việc đó, bạn phải định nghĩa ở server để Book chỉ nhận về kiểu`String`cho hai field trên. Thế là`type` ra đời - [scalar-types](http://graphql.org/learn/schema/#scalar-types)
+Bất kể `Query` hay `Mutation` thì khi định nghĩa chúng, chúng ta phải khai báo kiểu dữ liệu mà chúng sẽ nhận - tương tự như cách mà các`Statically typed languages`địng nghĩa như Java, C, C++. Ví dụ bạn muốn lấy các`Book`từ server, mỗi`Book`bạn muốn lấy`title`và`author`. Cả hai field`title`và`author`bạn chỉ muốn nhận về là`String`mà không phải là`undefined`,`null`hay`object`, ... Để làm được việc đó, bạn phải định nghĩa ở server để Book chỉ nhận về kiểu`String`cho hai field trên. Thế là`type` ra đời - [scalar-types](http://graphql.org/learn/schema/#scalar-types)
 
 ```
 ...
