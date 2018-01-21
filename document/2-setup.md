@@ -21,8 +21,8 @@ NODE_ENV=development
 MONGO_URI=mongodb://mongo/job
 
 # API
-API_ENDPOINT=/graphql
-API_PORT=9999
+SERVICE_ENDPOINT=/graphql
+SERVICE_PORT=9999
 ```
 
 ## Setup app

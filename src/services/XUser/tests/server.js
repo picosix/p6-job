@@ -1,6 +1,8 @@
 const { tester } = require("graphql-tester");
 
 module.exports = tester({
-  url: `http://localhost:${process.env.API_PORT}${process.env.API_ENDPOINT}`,
+  url: `http://localhost:${process.env.SERVICE_PORT}${
+    process.env.SERVICE_ENDPOINT
+  }`,
   contentType: "application/json"
 });
