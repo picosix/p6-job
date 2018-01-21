@@ -1,6 +1,17 @@
+const _ = require("lodash");
+
+const limit = Number(process.env.DOC_LIMIT);
+
 module.exports = {
   debug: process.env.NODE_ENV !== "production",
-  mongoUri: process.env.MONGO_URI || "",
-  port: process.env.API_PORT || 9999,
-  endpoint: process.env.API_ENDPOINT || "/graphql"
+  db: {
+    uri: process.env.MONGO_URI || ""
+  },
+  service: {
+    port: process.env.SERVICE_PORT || 9999,
+    endpoint: process.env.SERVICE_ENDPOINT || "/graphql"
+  },
+  doc: {
+    limit: !_.isNaN(limit) ? limit : 20
+  }
 };

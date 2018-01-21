@@ -1,6 +1,13 @@
 module.exports = `
   type Query {
-    users: [User!],
+    users(
+      _page: Int = 0,
+      username: String,
+      email: String,
+      status: Int,
+      createdAt: String,
+      updatedAt: String
+    ): [User!],
     user(_id: String!): User!
     account(_id: String!): Account!
   }

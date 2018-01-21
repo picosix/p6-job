@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 const bluebird = require("bluebird");
 
-const { mongoUri } = require("./settings");
+const { db } = require("./settings");
 
 // Mongoose config
 mongoose
-  .connect(mongoUri)
+  .connect(db.uri)
   .then(() => {})
   .catch(err => {
     console.log(
