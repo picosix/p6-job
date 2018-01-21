@@ -5,7 +5,7 @@ const _ = require("lodash");
 const server = require("./server");
 const utils = require("./utils");
 
-describe("Find one user", () => {
+describe("Remove one user", () => {
   let _id;
 
   beforeAll(async () => {
@@ -18,8 +18,8 @@ describe("Find one user", () => {
     server(
       JSON.stringify({
         query: `
-        mutation removeUser($_id: String!) {
-          removeUser(_id: $_id) {
+        mutation adminUserRemove($_id: String!) {
+          userRemove(_id: $_id) {
             _id,
             username
           }
@@ -31,9 +31,9 @@ describe("Find one user", () => {
     )
       .then(res => {
         expect(res.status).toBe(200);
-        expect(res.data.removeUser).toBeTruthy();
-        expect(res.data.removeUser._id).toBe(_id);
-        expect(res.data.removeUser.username).toBeTruthy();
+        expect(res.data.userRemove).toBeTruthy();
+        expect(res.data.userRemove._id).toBe(_id);
+        expect(res.data.userRemove.username).toBeTruthy();
         done();
       })
       .catch(err => {

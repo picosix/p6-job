@@ -18,7 +18,7 @@ describe("Find one user", () => {
     server(
       JSON.stringify({
         query: `
-        query findUser($_id: String!) {
+        query adminUserFind($_id: String!) {
           user(_id: $_id) {
             _id,
             username

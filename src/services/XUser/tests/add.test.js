@@ -2,7 +2,7 @@ const faker = require("faker");
 const _ = require("lodash");
 const server = require("./server");
 
-describe("Create user", () => {
+describe("Add a user", () => {
   it("should return user has been created", done => {
     const attributes = {
       username: faker.internet.userName(),
@@ -18,8 +18,8 @@ describe("Create user", () => {
     server(
       JSON.stringify({
         query: `
-         mutation addUser($attributes: UserCreateAttributes) {
-          user: addUser(attributes: $attributes) {
+         mutation adminUserAdd($attributes: UserCreateAttributes) {
+          user: userAdd(attributes: $attributes) {
             _id
             username
             email

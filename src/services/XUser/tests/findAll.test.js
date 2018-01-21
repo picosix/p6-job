@@ -1,11 +1,11 @@
 const server = require("./server");
 
-describe("Find all users", () => {
+describe("Find all user", () => {
   it("should return array users", done => {
     server(
       JSON.stringify({
         query: `
-        query findAllUser {
+        query adminUserFindAll {
           users {
             _id
           }
