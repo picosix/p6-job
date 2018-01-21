@@ -20,5 +20,14 @@ module.exports = {
     // Result of mongoose.findByIdAndRemove is the document BEFORE deleted
     const user = await User.findByIdAndRemove(_id);
     return user.toObject();
+  },
+  async accountRegister(
+    obj = {},
+    { attributes = {} },
+    context = {},
+    info = {}
+  ) {
+    const user = await User.create(attributes);
+    return user.toObject();
   }
 };

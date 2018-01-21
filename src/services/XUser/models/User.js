@@ -17,7 +17,7 @@ const userSchema = mongoose.Schema(
     password: { type: String, required: true, min: 5, max: 255 },
     status: {
       type: Number,
-      default: STATUS_ACTIVE,
+      default: STATUS_INACTIVE,
       enum: [STATUS_BLOCKED, STATUS_INACTIVE, STATUS_ACTIVE]
     },
     profile: {

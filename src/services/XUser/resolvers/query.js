@@ -6,5 +6,8 @@ module.exports = {
   },
   async user(obj = {}, { _id = "" }, context = {}, info = {}) {
     return User.findById(_id);
+  },
+  async account(obj = {}, { _id = "" }, context = {}, info = {}) {
+    return User.findById(_id).select("username email status profile");
   }
 };

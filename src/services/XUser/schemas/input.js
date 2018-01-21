@@ -17,4 +17,11 @@ module.exports = `
     status: Int!
     profile: UserProfileAttributes
   }
+
+  input AccountRegisterAttributes {
+    username: String!
+    email: String!
+    password: String!
+    profile: UserProfileAttributes
+  }
 `;

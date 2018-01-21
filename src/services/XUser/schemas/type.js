@@ -11,6 +11,16 @@ module.exports = `
     email: String!
     password: String!
     status: Int!
+    profile: UserProfile,
+    createdAt: String!
+    updatedAt: String!
+  }
+
+  type Account {
+    _id: ID!
+    username: String!
+    email: String!
+    status: Int!
     profile: UserProfile
   }
 `;
