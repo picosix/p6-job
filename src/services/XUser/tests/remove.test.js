@@ -19,7 +19,7 @@ describe("Remove one user", () => {
       JSON.stringify({
         query: `
         mutation adminUserRemove($_id: String!) {
-          userRemove(_id: $_id) {
+          user: userRemove(_id: $_id) {
             _id,
             username
           }
@@ -31,9 +31,9 @@ describe("Remove one user", () => {
     )
       .then(res => {
         expect(res.status).toBe(200);
-        expect(res.data.userRemove).toBeTruthy();
-        expect(res.data.userRemove._id).toBe(_id);
-        expect(res.data.userRemove.username).toBeTruthy();
+        expect(res.data.user).toBeTruthy();
+        expect(res.data.user._id).toBe(_id);
+        expect(res.data.user.username).toBeTruthy();
         done();
       })
       .catch(err => {
