@@ -26,7 +26,7 @@ describe("Update user", () => {
     server(
       JSON.stringify({
         query: `
-         mutation updateUser($_id: String!, $attributes: UserAttributes!) {
+         mutation updateUser($_id: String!, $attributes: UserUpdateAttributes!) {
           user: updateUser(_id: $_id, attributes: $attributes) {
             _id
             status

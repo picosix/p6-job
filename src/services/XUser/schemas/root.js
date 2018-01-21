@@ -5,8 +5,8 @@ module.exports = `
   }
 
   type Mutation {
-    addUser(attributes: UserCreate): User!
-    updateUser(_id: String, attributes: UserAttributes): User!
+    addUser(attributes: UserCreateAttributes): User!
+    updateUser(_id: String, attributes: UserUpdateAttributes): User!
     removeUser(_id: String): User!
   }
 `;

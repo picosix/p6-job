@@ -1,5 +1,5 @@
 module.exports = `
-  type Profile {
+  type UserProfile {
     firstName: String
     lastName: String
     avatar: String
@@ -11,6 +11,6 @@ module.exports = `
     email: String!
     password: String!
     status: Int!
-    profile: Profile
+    profile: UserProfile
   }
 `;

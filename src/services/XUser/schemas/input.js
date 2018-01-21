@@ -1,20 +1,20 @@
 module.exports = `
-  input UserProfile {
+  input UserProfileAttributes {
     firstName: String
     lastName: String
     avatar: String
   }
 
-  input UserAttributes {
+  input UserUpdateAttributes {
     status: Int!
-    profile: UserProfile
+    profile: UserProfileAttributes
   }
 
-  input UserCreate {
+  input UserCreateAttributes {
     username: String!
     email: String!
     password: String!
     status: Int!
-    profile: UserProfile
+    profile: UserProfileAttributes
   }
 `;

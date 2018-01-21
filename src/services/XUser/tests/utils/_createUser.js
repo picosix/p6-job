@@ -19,7 +19,7 @@ const attributes = {
 module.exports = server(
   JSON.stringify({
     query: `
-     mutation addUser($attributes: UserCreate) {
+     mutation addUser($attributes: UserCreateAttributes) {
       user: addUser(attributes: $attributes) {
         _id
         username
