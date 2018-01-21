@@ -21,7 +21,8 @@ describe("Find one user", () => {
         query adminUserFind($_id: String!) {
           user(_id: $_id) {
             _id,
-            username
+            username,
+            createdAt
           }
         }`,
         variables: {
@@ -34,6 +35,7 @@ describe("Find one user", () => {
         expect(res.data.user).toBeTruthy();
         expect(res.data.user._id).toBe(_id);
         expect(res.data.user.username).toBeTruthy();
+        expect(res.data.user.createdAt).toBeTruthy();
         done();
       })
       .catch(err => {
