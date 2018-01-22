@@ -3,6 +3,7 @@ const bluebird = require("bluebird");
 
 const User = require("../models/User");
 const jwtSign = bluebird.promisify(jwt.sign);
+const jwtVerify = bluebird.promisify(jwt.verify);
 
 module.exports = {
   async userAdd(obj = {}, { attributes = {} }, context = {}, info = {}) {
@@ -37,9 +38,10 @@ module.exports = {
   async accountLoginLocal(
     obj = {},
     { attributes = {} },
-    { _secretKey },
+    { auth = {} },
     info = {}
   ) {
+    const { secretKey, expiresIn } = auth;
     const { username: loginUsername, password: loginPassword } = attributes;
     // Allow login by username and email
     const user = await User.findOne({
@@ -50,11 +52,12 @@ module.exports = {
     }
 
     const { _id, username, email } = user.toObject();
-    const accessToken = await jwtSign({ _id, username, email }, _secretKey, {
-      expiresIn: "1d"
+    const accessToken = await jwtSign({ _id, username, email }, secretKey, {
+      expiresIn: expiresIn.accessToken
     });
-    const refreshToken = await jwtSign({ _id, username, email }, _secretKey, {
-      expiresIn: "2d"
+
+    const refreshToken = await jwtSign({ _id, username, email }, secretKey, {
+      expiresIn: expiresIn.refreshToken
     });
 
     return { accessToken, refreshToken };

@@ -6,7 +6,7 @@ module.exports = {
   async users(
     obj = {},
     { username, email, status, createdAt, updatedAt },
-    { _paging, _ordering },
+    { paging, ordering },
     info = {}
   ) {
     const query = User.find({});
@@ -35,10 +35,10 @@ module.exports = {
       );
     }
 
-    query.skip(_paging.offset);
-    query.limit(_paging.limit);
-    if (_ordering) {
-      query.sort(_ordering);
+    query.skip(paging.offset);
+    query.limit(paging.limit);
+    if (ordering) {
+      query.sort(ordering);
     }
 
     return query.exec();

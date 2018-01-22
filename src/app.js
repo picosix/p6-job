@@ -5,7 +5,7 @@ const { graphqlExpress, graphiqlExpress } = require("apollo-server-express");
 const { makeExecutableSchema } = require("graphql-tools");
 
 const { paging, ordering } = require("./utils");
-const { debug, secretKey, service, endpoint, doc } = require("./settings");
+const { debug, auth, service, endpoint, doc } = require("./settings");
 const schema = require("./services");
 
 // Create Express server
@@ -27,9 +27,9 @@ app.use(
     return {
       schema,
       context: {
-        _paging: paging(_page, doc.limit),
-        _ordering: ordering(_sort),
-        _secretKey: secretKey
+        paging: paging(_page, doc.limit),
+        ordering: ordering(_sort),
+        auth
       },
       debug
     };
