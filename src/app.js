@@ -6,8 +6,12 @@ const { makeExecutableSchema } = require("graphql-tools");
 
 const { paging, ordering } = require("./utils");
 const { debug, auth, service, endpoint, doc } = require("./settings");
-const { authentication, authorize } = require("./auth");
-const schema = require("./services");
+const { authentication, auhthorization } = require("./auth");
+const { typeDefs, resolvers } = require("./services");
+
+// The customized GraphQL
+const graphQlSchema = require("./graphql/schemas");
+const { authorizedOperation } = require("./graphql/rules");
 
 // Create Express server
 const app = express();
@@ -17,8 +21,14 @@ app.set("port", service.port);
 app.use(compression());
 app.use(bodyParser.json());
 
-// Authentication midleware
+// The authentication midleware
 app.use(authentication(auth.secretKey));
+
+// The GraphQL schema
+const schema = makeExecutableSchema({
+  typeDefs: [...graphQlSchema, ...typeDefs],
+  resolvers
+});
 // The GraphQL endpoint
 app.use(
   service.endpoint,
@@ -27,6 +37,9 @@ app.use(
     const { variables = {} } = req.body || {};
     const { _page = 0, _sort = {} } = variables;
 
+    // The GraphQL validation rules
+    const validationRules = [authorizedOperation(auhthorization(req._user))];
+
     return {
       schema,
       context: {
@@ -34,8 +47,8 @@ app.use(
         ordering: ordering(_sort),
         auth
       },
-      debug,
-      validationRules: [authorize(async () => true)]
+      validationRules,
+      debug
     };
   })
 );

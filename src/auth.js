@@ -25,22 +25,7 @@ const authentication = secretKey => {
   };
 };
 
-const authorize = resolverRules => context => {
-  return {
-    async OperationAuthorization(node) {
-      // Cannot authorize because of invalid request
-      // - resolverRules is not a function
-      // - Query name is not defined - Don't allow Anonymous Operation
-      if (
-        !_.isFunction(resolverRules) ||
-        !node.name ||
-        node.name.kind !== "Name" ||
-        (await resolverRules(node.name.value)) !== true
-      ) {
-        return context.reportError(new GraphQLError("Forbidden", [node]));
-      }
-    }
-  };
+const auhthorization = user => async operationName => {
+  return true;
 };
-
-module.exports = { authentication, authorize };
+module.exports = { authentication, auhthorization };
