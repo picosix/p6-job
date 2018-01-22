@@ -6,6 +6,7 @@ const { makeExecutableSchema } = require("graphql-tools");
 
 const { paging, ordering } = require("./utils");
 const { debug, auth, service, endpoint, doc } = require("./settings");
+const { authentication, authorize } = require("./auth");
 const schema = require("./services");
 
 // Create Express server
@@ -16,6 +17,8 @@ app.set("port", service.port);
 app.use(compression());
 app.use(bodyParser.json());
 
+// Authentication midleware
+app.use(authentication(auth.secretKey));
 // The GraphQL endpoint
 app.use(
   service.endpoint,
@@ -31,7 +34,8 @@ app.use(
         ordering: ordering(_sort),
         auth
       },
-      debug
+      debug,
+      validationRules: [authorize(async () => true)]
     };
   })
 );
