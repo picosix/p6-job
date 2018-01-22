@@ -7,6 +7,7 @@ module.exports = {
   db: {
     uri: process.env.MONGO_URI || ""
   },
+  secretKey: process.env.SECRET_KEY || "yoursecretkey",
   service: {
     port: process.env.SERVICE_PORT || 9999,
     endpoint: process.env.SERVICE_ENDPOINT || "/graphql"

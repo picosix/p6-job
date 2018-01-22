@@ -29,6 +29,11 @@ const userSchema = mongoose.Schema(
   { timestamps: true }
 );
 
+// Defined methods
+userSchema.methods.passwordCompare = async function passwordCompare(password) {
+  return bcrypt.compare(password, this.password);
+};
+
 // DON'T use arrow function,
 // because of the this context will be not link to model instance
 userSchema.pre("save", function preSave(next) {

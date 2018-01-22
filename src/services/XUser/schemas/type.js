@@ -23,4 +23,9 @@ module.exports = `
     status: Int!
     profile: UserProfile
   }
+
+  type AccountToken {
+    accessToken: String!
+    refreshToken: String!
+  }
 `;

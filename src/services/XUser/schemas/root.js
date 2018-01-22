@@ -18,5 +18,6 @@ module.exports = `
     userUpdate(_id: String!, attributes: UserUpdateAttributes!): User!
     userRemove(_id: String!): User!
     accountRegister(attributes: AccountRegisterAttributes!): Account!
+    accountLoginLocal(attributes: AccountLoginLocalAttributes!): AccountToken!
   }
 `;

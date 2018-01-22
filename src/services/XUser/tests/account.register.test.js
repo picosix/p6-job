@@ -1,5 +1,6 @@
 const faker = require("faker");
 const _ = require("lodash");
+
 const server = require("./server");
 
 describe("Register new account", () => {

@@ -7,7 +7,7 @@ const server = require("../server");
 const attributes = {
   username: faker.internet.userName(),
   email: faker.internet.email(),
-  password: faker.internet.password(),
+  password: "123456",
   status: 0,
   profile: {
     firstName: faker.name.findName(),
