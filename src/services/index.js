@@ -1,7 +1,13 @@
-const { mergeSchemas } = require("graphql-tools");
+const { makeExecutableSchema } = require("graphql-tools");
+const _ = require("lodash");
 
-const userSchema = require("./XUser");
+// General schemas
+const generalSchema = require("./schemas");
 
-module.exports = mergeSchemas({
-  schemas: [userSchema]
+// Service schemas
+const { schemas: userSchema, resolvers: userResolvers } = require("./XUser");
+
+module.exports = makeExecutableSchema({
+  typeDefs: [...generalSchema, ...userSchema],
+  resolvers: _.merge({}, userResolvers)
 });
