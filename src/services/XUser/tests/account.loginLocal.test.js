@@ -11,8 +11,8 @@ describe("Login to account with username and password", () => {
   let user;
 
   beforeAll(async () => {
-    user = await utils.createUser;
-    return user;
+    await utils.clearDb();
+    user = await utils.createUser();
   });
 
   it("should return access & refresh token with username + password", async () => {

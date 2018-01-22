@@ -6,12 +6,11 @@ const server = require("./server");
 const utils = require("./utils");
 
 describe("Find account infomation", () => {
-  let _id;
+  let user;
 
   beforeAll(async () => {
-    const user = await utils.createUser;
-    _id = user._id;
-    return user;
+    await utils.clearDb();
+    user = await utils.createUser();
   });
 
   it("should return account with _id", async () => {
@@ -25,14 +24,14 @@ describe("Find account infomation", () => {
           }
         }`,
         variables: {
-          _id
+          _id: user._id
         }
       })
     );
 
     expect(res.status).toBe(200);
     expect(res.data.account).toBeTruthy();
-    expect(res.data.account._id).toBe(_id);
+    expect(res.data.account._id).toBe(user._id);
     expect(res.data.account.username).toBeTruthy();
   });
 
@@ -47,7 +46,7 @@ describe("Find account infomation", () => {
           }
         }`,
         variables: {
-          _id
+          _id: user._id
         }
       })
     );

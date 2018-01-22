@@ -8,7 +8,7 @@
   "scripts": {
     "start": "",
     "start-dev": "node -r dotenv/config ./node_modules/.bin/nodemon bin/www.js",
-    "test": "node -r dotenv/config ./node_modules/.bin/jest",
+    "test": "node -r dotenv/config ./node_modules/.bin/jest --forceExit",
     "precommit": "pretty-quick --staged"
   },
   "dependencies": {

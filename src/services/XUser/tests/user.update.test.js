@@ -6,12 +6,11 @@ const server = require("./server");
 const utils = require("./utils");
 
 describe("Update user", () => {
-  let _id;
+  let user;
 
   beforeAll(async () => {
-    const user = await utils.createUser;
-    _id = user._id;
-    return user;
+    await utils.clearDb();
+    user = await utils.createUser();
   });
 
   it("should return user has been updated", async () => {
@@ -38,7 +37,7 @@ describe("Update user", () => {
           }
         }`,
         variables: {
-          _id,
+          _id: user._id,
           attributes: newAttributes
         }
       })

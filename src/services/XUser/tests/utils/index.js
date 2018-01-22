@@ -1,5 +1,7 @@
-const createUser = require("./_createUser");
+const createUser = require("./createUser");
+const clearDb = require("./clearDb");
 
 module.exports = {
-  createUser
+  createUser,
+  clearDb
 };

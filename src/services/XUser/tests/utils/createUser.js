@@ -16,29 +16,31 @@ const attributes = {
   }
 };
 
-module.exports = server(
-  JSON.stringify({
-    query: `
-     mutation adminUserAdd($attributes: UserCreateAttributes!) {
-      user: userAdd(attributes: $attributes) {
-        _id
-        username
-        email
-        password
-        status
-        profile {
-          firstName
-          lastName
+module.exports = async () => {
+  const res = await server(
+    JSON.stringify({
+      query: `
+       mutation adminUserAdd($attributes: UserCreateAttributes!) {
+        user: userAdd(attributes: $attributes) {
+          _id
+          username
+          email
+          password
+          status
+          profile {
+            firstName
+            lastName
+          }
         }
-      }
-    }`,
-    variables: { attributes }
-  })
-).then(res => {
+      }`,
+      variables: { attributes }
+    })
+  );
+
   expect(res.status).toBe(200);
   expect(res.data.user._id).toBeTruthy();
   expect(res.data.user.username).toBe(_.toLower(attributes.username));
   expect(res.data.user.email).toBe(_.toLower(attributes.email));
   expect(res.data.user.profile).toBeTruthy();
   return bluebird.resolve(res.data.user);
-});
+};

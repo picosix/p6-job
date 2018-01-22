@@ -1,8 +1,14 @@
 const faker = require("faker");
 const _ = require("lodash");
+
 const server = require("./server");
+const utils = require("./utils");
 
 describe("Add a user", () => {
+  beforeAll(async () => {
+    await utils.clearDb();
+  });
+
   it("should return user has been created", async () => {
     const attributes = {
       username: faker.internet.userName(),
