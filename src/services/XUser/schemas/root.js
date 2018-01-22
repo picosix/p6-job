@@ -2,11 +2,12 @@ module.exports = `
   type Query {
     users(
       _page: Int = 0,
+      _sort: FindSort,
       username: String,
       email: String,
       status: Int,
-      createdAt: String,
-      updatedAt: String
+      createdAt: FindBetween,
+      updatedAt: FindBetween  
     ): [User!],
     user(_id: String!): User!
     account(_id: String!): Account!

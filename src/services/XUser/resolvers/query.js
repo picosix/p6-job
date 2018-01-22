@@ -6,7 +6,7 @@ module.exports = {
   async users(
     obj = {},
     { username, email, status, createdAt, updatedAt },
-    { _doc },
+    { _paging, _ordering },
     info = {}
   ) {
     const query = User.find({});
@@ -20,16 +20,26 @@ module.exports = {
     if (status) {
       query.where("status", status);
     }
-    if (createdAt) {
-      query.where("createdAt").gte(new Date(createdAt));
+    if (_.isObject(createdAt)) {
+      _.each(
+        createdAt,
+        (date, type) =>
+          date ? query.where("createdAt")[type](new Date(date)) : ""
+      );
     }
-    if (updatedAt) {
-      query.where("updatedAt").gte(new Date(updatedAt));
+    if (_.isObject(updatedAt)) {
+      _.each(
+        updatedAt,
+        (date, type) =>
+          date ? query.where("updatedAt")[type](new Date(date)) : ""
+      );
     }
 
-    query.skip(_doc.offset);
-    query.limit(_doc.limit);
-    query.sort("createdAt");
+    query.skip(_paging.offset);
+    query.limit(_paging.limit);
+    if (_ordering) {
+      query.sort(_ordering);
+    }
 
     return query.exec();
   },
