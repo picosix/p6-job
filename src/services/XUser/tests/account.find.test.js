@@ -14,8 +14,8 @@ describe("Find account infomation", () => {
     return user;
   });
 
-  it("should return account with _id", done => {
-    server(
+  it("should return account with _id", async () => {
+    const res = await server(
       JSON.stringify({
         query: `
         query accountFind($_id: String!) {
@@ -28,22 +28,16 @@ describe("Find account infomation", () => {
           _id
         }
       })
-    )
-      .then(res => {
-        expect(res.status).toBe(200);
-        expect(res.data.account).toBeTruthy();
-        expect(res.data.account._id).toBe(_id);
-        expect(res.data.account.username).toBeTruthy();
-        done();
-      })
-      .catch(err => {
-        expect(err).toBe(null);
-        done();
-      });
+    );
+
+    expect(res.status).toBe(200);
+    expect(res.data.account).toBeTruthy();
+    expect(res.data.account._id).toBe(_id);
+    expect(res.data.account.username).toBeTruthy();
   });
 
-  it("should throw error if client request password", done => {
-    const request = server(
+  it("should throw error if client request password", async () => {
+    const res = await server(
       JSON.stringify({
         query: `
         query accountFind($_id: String!) {
@@ -56,19 +50,11 @@ describe("Find account infomation", () => {
           _id
         }
       })
-    )
-      .then(res => {
-        expect(res.status).toBe(400);
-        expect(res.data).toBeFalsy();
-        expect(res.errors).toBeTruthy();
-        expect(res.errors[0].message).toEqual(
-          expect.stringContaining("password")
-        );
-        done();
-      })
-      .catch(err => {
-        expect(err).toBe(null);
-        done();
-      });
+    );
+
+    expect(res.status).toBe(400);
+    expect(res.data).toBeFalsy();
+    expect(res.errors).toBeTruthy();
+    expect(res.errors[0].message).toEqual(expect.stringContaining("password"));
   });
 });

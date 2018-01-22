@@ -1,8 +1,8 @@
 const server = require("./server");
 
 describe("Find all user", () => {
-  it("should return array users", done => {
-    server(
+  it("should return array users", async () => {
+    const res = await server(
       JSON.stringify({
         query: `
         query adminUserFindAll {
@@ -11,15 +11,9 @@ describe("Find all user", () => {
           }
         }`
       })
-    )
-      .then(res => {
-        expect(res.status).toBe(200);
-        expect(res.data.users).toBeTruthy();
-        done();
-      })
-      .catch(err => {
-        expect(err).toBe(null);
-        done();
-      });
+    );
+
+    expect(res.status).toBe(200);
+    expect(res.data.users).toBeTruthy();
   });
 });

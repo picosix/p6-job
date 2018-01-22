@@ -4,7 +4,7 @@ const _ = require("lodash");
 const server = require("./server");
 
 describe("Register new account", () => {
-  it("should return account has been created", done => {
+  it("should return account has been created", async () => {
     const attributes = {
       username: faker.internet.userName(),
       email: faker.internet.email(),
@@ -15,7 +15,7 @@ describe("Register new account", () => {
         avatar: faker.image.avatar()
       }
     };
-    server(
+    const res = await server(
       JSON.stringify({
         query: `
          mutation accountRegister($attributes: AccountRegisterAttributes!) {
@@ -32,18 +32,12 @@ describe("Register new account", () => {
         }`,
         variables: { attributes }
       })
-    )
-      .then(res => {
-        expect(res.status).toBe(200);
-        expect(res.data.account._id).toBeTruthy();
-        expect(res.data.account.username).toBe(_.toLower(attributes.username));
-        expect(res.data.account.email).toBe(_.toLower(attributes.email));
-        expect(res.data.account.profile).toBeTruthy();
-        done();
-      })
-      .catch(err => {
-        expect(err).toBe(null);
-        done();
-      });
+    );
+
+    expect(res.status).toBe(200);
+    expect(res.data.account._id).toBeTruthy();
+    expect(res.data.account.username).toBe(_.toLower(attributes.username));
+    expect(res.data.account.email).toBe(_.toLower(attributes.email));
+    expect(res.data.account.profile).toBeTruthy();
   });
 });

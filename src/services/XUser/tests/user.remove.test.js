@@ -14,8 +14,8 @@ describe("Remove one user", () => {
     return user;
   });
 
-  it("should return user with _id", done => {
-    server(
+  it("should return user with _id", async () => {
+    const res = await server(
       JSON.stringify({
         query: `
         mutation adminUserRemove($_id: String!) {
@@ -28,17 +28,11 @@ describe("Remove one user", () => {
           _id
         }
       })
-    )
-      .then(res => {
-        expect(res.status).toBe(200);
-        expect(res.data.user).toBeTruthy();
-        expect(res.data.user._id).toBe(_id);
-        expect(res.data.user.username).toBeTruthy();
-        done();
-      })
-      .catch(err => {
-        expect(err).toBe(null);
-        done();
-      });
+    );
+
+    expect(res.status).toBe(200);
+    expect(res.data.user).toBeTruthy();
+    expect(res.data.user._id).toBe(_id);
+    expect(res.data.user.username).toBeTruthy();
   });
 });
