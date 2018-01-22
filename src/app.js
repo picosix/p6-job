@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const compression = require("compression");
 const { graphqlExpress, graphiqlExpress } = require("apollo-server-express");
 const { makeExecutableSchema } = require("graphql-tools");
+const _ = require("lodash");
 
 const { paging, ordering } = require("./utils");
 const { debug, auth, service, endpoint, doc } = require("./settings");
@@ -33,12 +34,13 @@ const schema = makeExecutableSchema({
 app.use(
   service.endpoint,
   bodyParser.json(),
-  graphqlExpress(req => {
+  graphqlExpress(async req => {
     const { variables = {} } = req.body || {};
     const { _page = 0, _sort = {} } = variables;
 
     // The GraphQL validation rules
-    const validationRules = [authorizedOperation(auhthorization(req._user))];
+    const resolverRules = await auhthorization(req._user);
+    const validationRules = [authorizedOperation(resolverRules)];
 
     return {
       schema,
