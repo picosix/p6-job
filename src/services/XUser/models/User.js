@@ -24,7 +24,8 @@ const userSchema = mongoose.Schema(
       firstName: { type: String, max: 255 },
       lastName: { type: String, max: 255 },
       avatar: String
-    }
+    },
+    role: mongoose.Schema.Types.ObjectId
   },
   { timestamps: true }
 );
@@ -60,6 +61,6 @@ userSchema.pre("save", function preSave(next) {
 });
 
 const User = mongoose.model("User", userSchema);
+_.assign(User, { STATUS_INACTIVE, STATUS_ACTIVE, STATUS_BLOCKED });
 
-exports = module.exports = User;
-exports = { STATUS_INACTIVE, STATUS_ACTIVE, STATUS_BLOCKED };
+module.exports = User;

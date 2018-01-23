@@ -5,9 +5,20 @@ module.exports = `
     avatar: String
   }
 
+  input RolePermission {
+    name: String!
+    actions: [String!]
+  }
+
+  input RoleAttributes {
+    name: String!
+    permissions: [RolePermission!]
+  }
+
   input UserUpdateAttributes {
     status: Int!
     profile: UserProfileAttributes
+    role: String
   }
 
   input UserCreateAttributes {
@@ -16,13 +27,13 @@ module.exports = `
     password: String!
     status: Int!
     profile: UserProfileAttributes
+    role: String
   }
 
   input AccountRegisterAttributes {
     username: String!
     email: String!
     password: String!
-    profile: UserProfileAttributes
   }
 
   input AccountLoginLocalAttributes {

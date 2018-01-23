@@ -9,7 +9,7 @@ describe("Add a user", () => {
     await utils.clearDb();
   });
 
-  it("should return user has been created", async () => {
+  it("should return user - what has been created", async () => {
     const attributes = {
       username: faker.internet.userName(),
       email: faker.internet.email(),
