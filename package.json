@@ -6,7 +6,7 @@
   "author": "Tuan Nguyen <picosix.com@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "",
+    "start": "yarn start-dev",
     "start-dev": "node -r dotenv/config ./node_modules/.bin/nodemon bin/www.js",
     "test": "node -r dotenv/config ./node_modules/.bin/jest --forceExit",
     "precommit": "pretty-quick --staged"

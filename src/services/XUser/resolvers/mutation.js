@@ -65,7 +65,7 @@ module.exports = {
     return { accessToken, refreshToken };
   },
   async adminRoleAdd(obj = {}, { attributes = {} }, context = {}, info = {}) {
-    const user = await User.create(attributes);
-    return user.toObject();
+    const role = await Role.create(attributes);
+    return role.toObject();
   }
 };

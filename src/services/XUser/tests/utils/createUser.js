@@ -21,7 +21,7 @@ module.exports = async () => {
     JSON.stringify({
       query: `
        mutation adminUserAdd($attributes: UserCreateAttributes!) {
-        user: userAdd(attributes: $attributes) {
+        user: adminUserAdd(attributes: $attributes) {
           _id
           username
           email

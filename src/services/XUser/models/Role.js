@@ -17,7 +17,7 @@ const roleSchema = mongoose.Schema(
 );
 
 // Defined methods
-userSchema.methods.findAllowedActions = async function findAllowedActions() {
+roleSchema.methods.findAllowedActions = async function findAllowedActions() {
   const permisisons = await this.model("Role").find({ userId: this.userId });
   return permisisons || [];
 };

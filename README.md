@@ -25,7 +25,7 @@ $ docker run -d --restart always --name nginx-proxy -p 80:80 -p 443:443 -v $(pwd
 * Node
 
 ```shell
-$ docker run -d -e VIRTUAL_HOST=job.picosix.local --restart always --name p6-job-node -v $(pwd):/app --link mongo:mongo picosix/node yarn start
+$ docker run -d -e VIRTUAL_HOST=job-api.picosix.local --restart always --name p6-job-api-node -v $(pwd):/app --link mongo:mongo picosix/node yarn start
 ```
 
 ## Documents

@@ -29,6 +29,7 @@ module.exports = `
     username: String!
     email: String!
     password: String!
+    profile: UserProfileAttributes
   }
 
   input AccountLoginLocalAttributes {

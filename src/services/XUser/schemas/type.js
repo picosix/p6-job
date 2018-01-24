@@ -29,7 +29,8 @@ module.exports = `
     refreshToken: String!
   }
 
-  type adminRoleAdd {
+  type Role {
+    _id: ID!
     name: String!
     permissions: [String!]
   }
