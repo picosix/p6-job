@@ -25,7 +25,7 @@ describe("Add a user", () => {
       JSON.stringify({
         query: `
          mutation adminUserAdd($attributes: UserCreateAttributes!) {
-          user: userAdd(attributes: $attributes) {
+          user: adminUserAdd(attributes: $attributes) {
             _id
             username
             email

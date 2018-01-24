@@ -10,8 +10,8 @@ module.exports = {
   auth: {
     secretKey: process.env.AUTH_SECRET_KEY || "yoursecretkey",
     expiresIn: {
-      accessToken: process.env.AUTH_ACCESS_TOKEN_EXPIRED || "1d",
-      refreshToken: process.env.AUTH_REFRESH_TOKEN_EXPIRED || "2d"
+      accessToken: process.env.AUTH_TOKEN_ACCESS_EXPIRED || "1d",
+      refreshToken: process.env.AUTH_TOKEN_REFRESH_EXPIRED || "2d"
     }
   },
   service: {

@@ -5,14 +5,9 @@ module.exports = `
     avatar: String
   }
 
-  input RolePermission {
-    name: String!
-    actions: [String!]
-  }
-
   input RoleAttributes {
     name: String!
-    permissions: [RolePermission!]
+    permissions: [String!]
   }
 
   input UserUpdateAttributes {

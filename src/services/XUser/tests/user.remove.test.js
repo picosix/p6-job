@@ -18,7 +18,7 @@ describe("Remove one user", () => {
       JSON.stringify({
         query: `
         mutation adminUserRemove($_id: String!) {
-          user: userRemove(_id: $_id) {
+          user: adminUserRemove(_id: $_id) {
             _id,
             username
           }

@@ -14,9 +14,10 @@ module.exports = `
   }
 
   type Mutation {
-    userAdd(attributes: UserCreateAttributes!): User!
-    userUpdate(_id: String!, attributes: UserUpdateAttributes!): User!
-    userRemove(_id: String!): User!
+    adminUserAdd(attributes: UserCreateAttributes!): User!
+    adminUserUpdate(_id: String!, attributes: UserUpdateAttributes!): User!
+    adminUserRemove(_id: String!): User!
+    adminRoleAdd(attributes: RoleAttributes!): Role!
     accountRegister(attributes: AccountRegisterAttributes!): Account!
     accountLoginLocal(attributes: AccountLoginLocalAttributes!): AccountToken!
   }
