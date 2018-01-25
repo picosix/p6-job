@@ -25,17 +25,4 @@ const authentication = secretKey => {
   };
 };
 
-/**
- * Find all allowed operation of users
- * then return result of comparation of operationName and allowed operations
- * @param {object} user User information
- * @return {function} synchronous function to decide this action is allowed or not
- */
-const auhthorization = async user => {
-  // Do all async code here
-  const allowedOperations = [];
-
-  // Return a higher-order function
-  return operationName => true;
-};
-module.exports = { authentication, auhthorization };
+module.exports = { authentication };

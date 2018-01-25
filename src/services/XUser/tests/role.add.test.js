@@ -9,7 +9,7 @@ describe("Add a role", () => {
     await utils.clearDb();
   });
 
-  it("should return user - what has been created", async () => {
+  it("should return created role", async () => {
     const attributes = {
       name: faker.lorem.word(),
       status: 1,

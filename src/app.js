@@ -12,7 +12,6 @@ const { typeDefs, resolvers } = require("./services");
 
 // The customized GraphQL
 const graphQlSchema = require("./graphql/schemas");
-const { authorizedOperation } = require("./graphql/rules");
 
 // Create Express server
 const app = express();
@@ -39,10 +38,6 @@ app.use(
     const { variables = {} } = req.body || {};
     const { _page = 0, _sort = {} } = variables;
 
-    // The GraphQL validation rules
-    const resolverRules = await auhthorization(req._user);
-    const validationRules = [authorizedOperation(resolverRules)];
-
     return {
       schema,
       context: {
@@ -50,7 +45,6 @@ app.use(
         ordering: ordering(_sort),
         settings
       },
-      validationRules,
       debug
     };
   })
