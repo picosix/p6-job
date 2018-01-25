@@ -40,10 +40,10 @@ module.exports = {
   async accountLoginLocal(
     obj = {},
     { attributes = {} },
-    { auth = {} },
+    { settings = {} },
     info = {}
   ) {
-    const { secretKey, expiresIn } = auth;
+    const { secretKey, expiresIn } = settings.auth;
     const { username: loginUsername, password: loginPassword } = attributes;
     // Allow login by username and email
     const user = await User.findOne({

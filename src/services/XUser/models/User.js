@@ -5,8 +5,6 @@ const bcrypt = require("bcrypt");
 
 mongoose.Promise = bluebird;
 
-const { roleDefault } = require("../settings");
-
 // Constants
 const STATUS_BLOCKED = -1;
 const STATUS_INACTIVE = 1;
@@ -27,10 +25,7 @@ const userSchema = mongoose.Schema(
       lastName: { type: String, max: 255 },
       avatar: String
     },
-    role: {
-      type: String,
-      default: roleDefault
-    }
+    role: String
   },
   { timestamps: true }
 );

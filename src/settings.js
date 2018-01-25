@@ -20,5 +20,8 @@ module.exports = {
   },
   doc: {
     limit: !_.isNaN(limit) ? limit : 20
+  },
+  XUser: {
+    roleDefault: process.env.AUTH_ROLE_DEFAULT || "Member"
   }
 };

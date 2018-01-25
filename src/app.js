@@ -6,7 +6,7 @@ const { makeExecutableSchema } = require("graphql-tools");
 const _ = require("lodash");
 
 const { paging, ordering } = require("./utils");
-const { debug, auth, service, endpoint, doc } = require("./settings");
+const settings = require("./settings");
 const { authentication, auhthorization } = require("./auth");
 const { typeDefs, resolvers } = require("./services");
 
@@ -16,6 +16,7 @@ const { authorizedOperation } = require("./graphql/rules");
 
 // Create Express server
 const app = express();
+const { debug, auth, service, endpoint, doc } = settings;
 
 // Express configuration
 app.set("port", service.port);
@@ -47,7 +48,7 @@ app.use(
       context: {
         paging: paging(_page, doc.limit),
         ordering: ordering(_sort),
-        auth
+        settings
       },
       validationRules,
       debug
