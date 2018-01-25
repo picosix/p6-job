@@ -32,6 +32,7 @@ module.exports = `
   type Role {
     _id: ID!
     name: String!
+    status: Int!
     permissions: [String!]
   }
 `;

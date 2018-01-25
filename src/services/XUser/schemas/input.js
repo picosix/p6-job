@@ -7,6 +7,7 @@ module.exports = `
 
   input RoleAttributes {
     name: String!
+    status: Int!
     permissions: [String!]
   }
 

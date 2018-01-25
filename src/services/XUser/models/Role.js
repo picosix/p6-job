@@ -11,6 +11,10 @@ const STATUS_ACTIVE = 1;
 const roleSchema = mongoose.Schema(
   {
     name: { type: String, unique: true, required: true },
+    status: {
+      type: Number,
+      default: STATUS_ACTIVE
+    },
     permissions: Array
   },
   { timestamps: true }

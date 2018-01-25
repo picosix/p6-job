@@ -67,5 +67,21 @@ module.exports = {
   async adminRoleAdd(obj = {}, { attributes = {} }, context = {}, info = {}) {
     const role = await Role.create(attributes);
     return role.toObject();
+  },
+  async adminRoleUpdate(
+    obj = {},
+    { _id = "", attributes = {} },
+    context = {},
+    info = {}
+  ) {
+    // Result of mongoose.findByIdAndUpdate is the document BEFORE updated
+    const role = await Role.findByIdAndUpdate(_id, attributes);
+    const updatedRole = await Role.findById(role._id);
+    return updatedRole.toObject();
+  },
+  async adminRoleRemove(obj = {}, { _id = "" }, context = {}, info = {}) {
+    // Result of mongoose.findByIdAndRemove is the document BEFORE deleted
+    const role = await Role.findByIdAndRemove(_id);
+    return role.toObject();
   }
 };

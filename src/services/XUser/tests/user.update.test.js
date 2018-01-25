@@ -13,7 +13,7 @@ describe("Update user", () => {
     user = await utils.createUser();
   });
 
-  it("should return user has been updated", async () => {
+  it("should return data of updated user", async () => {
     const newAttributes = {
       status: 1,
       profile: {

@@ -12,6 +12,7 @@ describe("Add a role", () => {
   it("should return user - what has been created", async () => {
     const attributes = {
       name: faker.lorem.word(),
+      status: 1,
       permissions: ["adminUserAdd", "adminUserUpdate", "adminUserRemove"]
     };
     const res = await server(
@@ -21,6 +22,7 @@ describe("Add a role", () => {
           role: adminRoleAdd(attributes: $attributes) {
             _id
             name
+            status
             permissions
           }
         }`,
@@ -30,7 +32,8 @@ describe("Add a role", () => {
 
     expect(res.status).toBe(200);
     expect(res.data.role._id).toBeTruthy();
-    expect(res.data.role.name).toBe(_.toLower(attributes.name));
+    expect(res.data.role.name).toBe(attributes.name);
+    expect(res.data.role.status).toBe(attributes.status);
     expect(res.data.role.permissions).toEqual(attributes.permissions);
   });
 });

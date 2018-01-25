@@ -5,33 +5,33 @@ const _ = require("lodash");
 const server = require("./server");
 const utils = require("./utils");
 
-describe("Remove one user", () => {
-  let user;
+describe("Remove one role", () => {
+  let role;
 
   beforeAll(async () => {
     await utils.clearDb();
-    user = await utils.createUser();
+    role = await utils.createRole();
   });
 
-  it("should return id of removed user", async () => {
+  it("should return _id of removed role", async () => {
     const res = await server(
       JSON.stringify({
         query: `
-        mutation adminUserRemove($_id: String!) {
-          user: adminUserRemove(_id: $_id) {
+        mutation adminRoleRemove($_id: String!) {
+          role: adminRoleRemove(_id: $_id) {
             _id,
-            username
+            name
           }
         }`,
         variables: {
-          _id: user._id
+          _id: role._id
         }
       })
     );
 
     expect(res.status).toBe(200);
-    expect(res.data.user).toBeTruthy();
-    expect(res.data.user._id).toBe(user._id);
-    expect(res.data.user.username).toBe(user.username);
+    expect(res.data.role).toBeTruthy();
+    expect(res.data.role._id).toBe(role._id);
+    expect(res.data.role.name).toBe(role.name);
   });
 });
